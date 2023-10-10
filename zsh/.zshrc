@@ -15,6 +15,7 @@ echo 'eval "$(direnv hook bash)"'
 
 #Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 #Ruby
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
@@ -44,3 +45,4 @@ bindkey '^[[B' history-substring-search-down
 
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
