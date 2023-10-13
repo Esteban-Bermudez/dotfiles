@@ -25,11 +25,6 @@ eval "$(rbenv init - zsh)"
 export PATH=/home/$USER/.fnm:$PATH
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 
-#pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 #History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
