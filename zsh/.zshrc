@@ -18,7 +18,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 #Ruby
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 eval "$(rbenv init - zsh)"
 
 # fnm
@@ -35,6 +34,11 @@ SAVEHIST=10000
 
 #Aliases
 alias g="git"
+alias gpf="git push --force-with-lease"
+alias ga="git add"
+alias gc="git commit"
+alias gform="git fetch origin main:main && git rebase -i main"
+alias gl="git log"
 
 #Plugins
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
