@@ -11,7 +11,7 @@ if [[ -r ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme ]]; then
 fi
 
 #envrc
-echo 'eval "$(direnv hook bash)"'
+eval "$(direnv hook bash)"
 
 #Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -33,6 +33,8 @@ SAVEHIST=10000
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 #Aliases
+alias ls="ls -laG"
+
 alias g="git"
 alias gpf="git push --force-with-lease"
 alias ga="git add"
@@ -46,6 +48,9 @@ source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="fg=4,underline"
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="fg=1,underline"
 
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
