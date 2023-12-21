@@ -11,7 +11,7 @@ if [[ -r ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme ]]; then
 fi
 
 #envrc
-eval "$(direnv hook bash)"
+eval "$(direnv hook zsh)"
 
 #Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -41,6 +41,8 @@ alias ga="git add"
 alias gc="git commit"
 alias gform="git fetch origin main:main && git rebase -i main"
 alias gl="git log"
+
+alias bx="bundle exec"
 
 #Plugins
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
