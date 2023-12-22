@@ -1,0 +1,12 @@
+[alias]
+  brunt = "!f() { git checkout $(git branch --sort=-committerdate | fzy -q "${@:-''}"); }; f"
+[commit]
+	verbose = true
+	template = ~/.gitmessage
+[rebase]
+	autosquash = true
+[user]
+	email = esteban@super.gd
+	name = Esteban-Bermudez
+[core]
+	excludesfile = ~/.config/git/ignore
