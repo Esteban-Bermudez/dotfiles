@@ -10,12 +10,13 @@ if [[ -r ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme ]]; then
   source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
 fi
 
-#envrc
-eval "$(direnv hook zsh)"
 
 #Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+[[ "$OSTYPE" != "darwin"* ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+#envrc
+eval "$(direnv hook zsh)"
 
 #Ruby
 eval "$(rbenv init - zsh)"
