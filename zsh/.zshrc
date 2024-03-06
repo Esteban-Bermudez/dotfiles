@@ -10,7 +10,9 @@ if [[ -r ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme ]]; then
   source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
 fi
 
-
+#Editor
+export EDITOR=vim
+export VISUAL=vim
 #Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -25,6 +27,8 @@ eval "$(rbenv init - zsh)"
 export PATH=/home/$USER/.fnm:$PATH
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
 #History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -45,6 +49,10 @@ alias gl="git log"
 
 alias bx="bundle exec"
 
+alias vimp="fd --type f --hidden --exclude .git | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o vim"
+alias rscope="rg -g 'spec/**/*_spec.rb' --files | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o rspec" 
+
+
 #Plugins
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
@@ -57,4 +65,5 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="fg=1,underline"
 
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
 
