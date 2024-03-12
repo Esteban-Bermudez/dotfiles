@@ -3,7 +3,8 @@ local lsp_zero = require('lsp-zero')
 lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
-  lsp_zero.default_keymaps({buffer = bufnr})
+  lsp_zero.default_keymaps({ buffer = bufnr })
+  lsp_zero.buffer_autoformat()
 end)
 
 -- to learn how to use mason.nvim with lsp-zero
@@ -19,7 +20,7 @@ require('mason-lspconfig').setup({
 
     lua_ls = function()
       --- in this function you can setup
-      --- the language server however you want. 
+      --- the language server however you want.
       --- in this example we just use lspconfig
 
       require('lspconfig').lua_ls.setup({
@@ -31,11 +32,10 @@ require('mason-lspconfig').setup({
     end,
     standardrb = function()
       --- in this function you can setup
-      --- the language server however you want. 
+      --- the language server however you want.
       --- in this example we just use lspconfig
 
       require('lspconfig').standardrb.setup({
-        cmd = {"~/.rbenv/shims/standardrb" , "--lsp"}
         -- in here you can add your own
         -- custom configuration
         ---
@@ -46,4 +46,3 @@ require('mason-lspconfig').setup({
 
   },
 })
-
