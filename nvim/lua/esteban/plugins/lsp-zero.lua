@@ -13,7 +13,8 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
     'lua_ls',
-    'standardrb'
+    'standardrb',
+    'solargraph'
   },
   handlers = {
     lsp_zero.default_setup,
@@ -42,7 +43,16 @@ require('mason-lspconfig').setup({
       })
     end,
 
-
-
+    solargraph = function()
+      require('lspconfig').solargraph.setup({
+        init_options = { formatting = false },
+        settings = {
+          solargraph = {
+            diagnostics = false,
+            useBundler = true
+          }
+        }
+      })
+    end,
   },
 })

@@ -11,8 +11,8 @@ if [[ -r ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme ]]; then
 fi
 
 #Editor
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 #Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
