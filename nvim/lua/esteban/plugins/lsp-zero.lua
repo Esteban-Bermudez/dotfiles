@@ -14,7 +14,8 @@ require('mason-lspconfig').setup({
   ensure_installed = {
     'lua_ls',
     'standardrb',
-    'solargraph'
+    'solargraph',
+    'gopls'
   },
   handlers = {
     lsp_zero.default_setup,
