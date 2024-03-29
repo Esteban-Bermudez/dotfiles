@@ -19,3 +19,43 @@ Mapper.map(
   "find_files",
   "Search for files"
 )
+
+Mapper.map(
+  'n',
+  '<leader>b',
+  "<cmd>lua require('telescope.builtin').buffers()<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Telescope",
+  "buffers",
+  "Search for buffers"
+)
+
+Mapper.map(
+  'n',
+  '<leader>rg',
+  "<cmd>lua require('telescope.builtin').live_grep()<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Telescope",
+  "live_grep",
+  "Grep codebase"
+)
+
+--nvimtree
+Mapper.map(
+  'n',
+  '<C-b>',
+  "<cmd>NvimTreeToggle<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "NvimTree",
+  "Toggle",
+  "Toggle NvimTree"
+)
