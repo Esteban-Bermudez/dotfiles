@@ -13,6 +13,7 @@ fi
 #Editor
 export EDITOR=nvim
 export VISUAL=nvim
+
 #Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -29,6 +30,7 @@ eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
 #History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -41,16 +43,16 @@ SAVEHIST=10000
 alias ls="ls -laG"
 
 alias g="git"
-alias gpf="git push --force-with-lease"
 alias ga="git add"
 alias gc="git commit"
-alias gform="git fetch origin main:main && git rebase -i main"
-alias gl="git log"
 
 alias bx="bundle exec"
 
-alias vimp="fd --type f --hidden --exclude .git | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o vim"
-alias rscope="rg -g 'spec/**/*_spec.rb' --files | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o rspec" 
+alias vim="nvim"
+alias vi="nvim"
+
+alias vimp="fd --type f --hidden --exclude .git | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o nvim"
+alias rscope="rg -g 'spec/**/*_spec.rb' --files | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o rspec"
 
 
 #Plugins
