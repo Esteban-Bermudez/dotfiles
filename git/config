@@ -1,5 +1,7 @@
 [alias]
   brunt = "!f() { git checkout $(git branch --sort=-committerdate | fzy -q "${@:-''}"); }; f"
+  form = !git fetch origin main:main && git rebase -i main
+  lease = !git push --force-with-lease
 [commit]
 	verbose = true
 	template = ~/.gitmessage
