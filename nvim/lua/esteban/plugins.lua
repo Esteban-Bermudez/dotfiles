@@ -15,17 +15,21 @@ return require('packer').startup(function(use)
   -- Packer
   use 'wbthomason/packer.nvim'
 
-  -- Theme
-  use { "catppuccin/nvim", as = "catppuccin" }
-
   -- Mapper
   use { "gregorias/nvim-mapper",
     config = function()
       require("nvim-mapper").setup {}
       require("esteban.plugins.nvim-mapper")
     end,
-    before = "telescope.nvim",
+    before = "telescope.nvim"
   }
+
+  -- Theme
+  use { "catppuccin/nvim", as = "catppuccin" }
+
+  -- Github Copilot
+  use 'github/copilot.vim'
+
 
   -- Telescope
   use {
@@ -68,6 +72,40 @@ return require('packer').startup(function(use)
     end
 
   }
+
+  -- Nvim Tree
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require("nvim-tree").setup()
+    end
+  }
+
+  -- Status Line
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+    require('lualine').setup({
+      options = {
+        theme = 'catppuccin',
+        section_separators = ' ',
+        component_separators = ' ',
+      },
+      sections = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'diff', 'branch' },
+        lualine_c = { 'buffers' },
+        lualine_x = { 'filetype' },
+        lualine_y = { 'filename', { path = 4, shorting_target = 100, } },
+        lualine_z = { 'location' },
+      },
+    })
+  }
+
+
   -- My plugins here
   -- use 'foo1/bar1.nvim'
   -- use 'foo2/bar2.nvim'
