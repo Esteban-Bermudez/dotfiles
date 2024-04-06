@@ -99,23 +99,10 @@ return require('packer').startup(function(use)
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-    require('lualine').setup({
-      options = {
-        theme = 'catppuccin',
-        section_separators = ' ',
-        component_separators = ' ',
-      },
-      sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'diff', 'branch' },
-        lualine_c = { 'buffers' },
-        lualine_x = { 'filetype' },
-        lualine_y = { 'filename', { path = 4, shorting_target = 100, } },
-        lualine_z = { 'location' },
-      },
-    })
+    config = function()
+      require('esteban.plugins.lualine')
+    end
   }
-
 
   -- My plugins here
   -- use 'foo1/bar1.nvim'
