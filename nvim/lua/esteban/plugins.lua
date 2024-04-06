@@ -26,6 +26,11 @@ return require('packer').startup(function(use)
 
   -- Theme
   use { "catppuccin/nvim", as = "catppuccin" }
+  require("catppuccin").setup({
+    flavour = "mocha",
+    transparent_background = true
+  })
+  vim.cmd.colorscheme "catppuccin"
 
   -- Github Copilot
   use 'github/copilot.vim'
