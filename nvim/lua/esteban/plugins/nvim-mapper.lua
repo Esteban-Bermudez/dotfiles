@@ -59,3 +59,30 @@ Mapper.map(
   "Toggle",
   "Toggle NvimTree"
 )
+
+-- GitSigns
+Mapper.map(
+  'n',
+  '<leader>gh',
+  "<cmd>lua require('gitsigns').preview_hunk()<CR>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "GitSigns",
+  "preview_hunk",
+  "Preview Current Hunk"
+)
+
+Mapper.map(
+  'n',
+  '<leader>hs',
+  "<cmd>lua require('gitsigns').stage_hunk()<CR>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "GitSigns",
+  "stage_hunk",
+  "Stage Current Hunk"
+)

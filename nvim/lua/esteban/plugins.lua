@@ -84,6 +84,17 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- Vim Plugins
+  use 'tpope/vim-commentary'
+
+  -- Git Signs
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('esteban.plugins.gitsigns')
+    end
+  }
+
   -- Status Line
   use {
     'nvim-lualine/lualine.nvim',
