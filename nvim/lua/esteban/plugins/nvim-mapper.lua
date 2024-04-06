@@ -22,7 +22,7 @@ Mapper.map(
 
 Mapper.map(
   'n',
-  '<leader>b',
+  '<C-b>',
   "<cmd>lua require('telescope.builtin').buffers()<cr>",
   {
     silent = true,
@@ -35,7 +35,7 @@ Mapper.map(
 
 Mapper.map(
   'n',
-  '<leader>rg',
+  '<leader>f',
   "<cmd>lua require('telescope.builtin').live_grep()<cr>",
   {
     silent = true,
@@ -46,10 +46,23 @@ Mapper.map(
   "Grep codebase"
 )
 
+Mapper.map(
+  'n',
+  '<C-f>',
+  "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Telescope",
+  "current_buffer_fuzzy_find",
+  "Fuzzy find in current buffer"
+)
+
 --nvimtree
 Mapper.map(
   'n',
-  '<C-b>',
+  '<leader>e',
   "<cmd>NvimTreeToggle<cr>",
   {
     silent = true,
