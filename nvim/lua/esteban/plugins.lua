@@ -91,6 +91,8 @@ return require('packer').startup(function(use)
 
   -- Vim Plugins
   use 'tpope/vim-commentary'
+  use 'christoomey/vim-tmux-navigator'
+
 
   -- Git Signs
   use {
