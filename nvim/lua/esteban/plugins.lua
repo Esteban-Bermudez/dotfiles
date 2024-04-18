@@ -35,12 +35,13 @@ return require('packer').startup(function(use)
   -- Github Copilot
   use 'github/copilot.vim'
 
-
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
+    config = function()
+      require("esteban.plugins.telescope")
+    end,
     requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
-    config = function() require("telescope").load_extension("mapper") end
   }
 
   -- Treesitter
