@@ -92,8 +92,9 @@ return require('packer').startup(function(use)
 
   -- Vim Plugins
   use 'tpope/vim-commentary'
+  use 'tpope/vim-surround'
   use 'christoomey/vim-tmux-navigator'
-
+  use 'm4xshen/autoclose.nvim'
 
   -- Git Signs
   use {
