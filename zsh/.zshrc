@@ -65,17 +65,23 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 function prompt_ruby_version {
   if [ -f .ruby-version ]; then
     RUBY_PROMPT="%F{red} $(cat .ruby-version)%f"
+  else 
+    RUBY_PROMPT=""
   fi
 }
 
 function prompt_node_version {
   if [ -f .node-version ]; then
-    NODE_PROMPT="%F{#006400}󰎙 $(cat .node-version)%f"
+    NODE_PROMPT="%F{green}󰎙 $(cat .node-version)%f"
+  else
+    NODE_PROMPT=""
   fi
 }
 
-function update_rprompt {
-  RPROMPT="$RUBY_PROMPT $NODE_PROMPT"
+function update_prompt {
+  VERSION_PROMPT="$RUBY_PROMPT $NODE_PROMPT"
+  NEWLINE=$'\n'
+  PROMPT="%F{cyan}%2~%f %F{magenta}(\$vcs_info_msg_0_)%f ${VERSION_PROMPT}${NEWLINE}%F{green}❯%f "
 }
 
 autoload -Uz vcs_info
@@ -83,12 +89,8 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info)
 precmd_functions+=( prompt_ruby_version)
 precmd_functions+=( prompt_node_version)
-precmd_functions+=( update_rprompt)
+precmd_functions+=( update_prompt)
 
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats '%b'
-
-
-PROMPT="%F{cyan}%2~%f %F{magenta}(\$vcs_info_msg_0_)%f %F{green}❯%f "
-RPROMPT="$(prompt_ruby_version) $(prompt_node_version)"
 
