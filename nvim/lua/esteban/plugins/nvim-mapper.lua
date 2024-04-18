@@ -74,28 +74,29 @@ Mapper.map(
 )
 
 -- GitSigns
-Mapper.map(
-  'n',
-  '<leader>gh',
-  "<cmd>lua require('gitsigns').preview_hunk()<CR>",
-  {
+local function m_map(mode, l, r, plugin, action, description)
+  local opts = {
     silent = true,
-    noremap = true
-  },
-  "GitSigns",
-  "preview_hunk",
-  "Preview Current Hunk"
-)
+    noremap = true,
+  }
+  Mapper.map(mode, l, "<cmd>lua " .. r .. "<cr>", opts, plugin, action, description)
+end
 
-Mapper.map(
-  'n',
-  '<leader>hs',
-  "<cmd>lua require('gitsigns').stage_hunk()<CR>",
-  {
-    silent = true,
-    noremap = true
-  },
-  "GitSigns",
-  "stage_hunk",
-  "Stage Current Hunk"
-)
+-- Actions
+m_map('n', '<leader>hs', "require('gitsigns').stage_hunk()", "GitSigns", "stage_hunk", "Stage hunk")
+m_map('n', '<leader>hr', "require('gitsigns').reset_hunk()", "GitSigns", "reset_hunk", "Reset hunk")
+m_map('v', '<leader>hs', "require('gitsigns').stage_hunk {vim.fn.line('.'), vim.fn.line('v')}", "GitSigns",
+  "stage_hunk_visual", "Stage hunk (visual)")
+m_map('v', '<leader>hr', "require('gitsigns').reset_hunk {vim.fn.line('.'), vim.fn.line('v')}", "GitSigns",
+  "reset_hunk_visual", "Reset hunk (visual)")
+m_map('n', '<leader>hS', "require('gitsigns').stage_buffer()", "GitSigns", "stage_buffer", "Stage buffer")
+m_map('n', '<leader>hu', "require('gitsigns').undo_stage_hunk()", "GitSigns", "undo_stage_hunk", "Undo stage hunk")
+m_map('n', '<leader>hR', "require('gitsigns').reset_buffer()", "GitSigns", "reset_buffer", "Reset buffer")
+m_map('n', '<leader>hp', "require('gitsigns').preview_hunk()", "GitSigns", "preview_hunk", "Preview hunk")
+m_map('n', '<leader>hb', "require('gitsigns').blame_line{full=true}", "GitSigns", "blame_line", "Blame line")
+m_map('n', '<leader>tb', "require('gitsigns').toggle_current_line_blame()", "GitSigns", "toggle_current_line_blame",
+  "Toggle current line blame")
+m_map('n', '<leader>hd', "require('gitsigns').diffthis()", "GitSigns", "diffthis", "Diff this")
+m_map('n', '<leader>hD', "require('gitsigns').diffthis('~')", "GitSigns", "diffthis_ignore",
+  "Diff this (ignore whitespace)")
+m_map('n', '<leader>td', "require('gitsigns').toggle_deleted()", "GitSigns", "toggle_deleted", "Toggle deleted")
