@@ -24,6 +24,11 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
+# Go
+GOPATH=/opt/homebrew/go
+GOBIN=$GOPATH/bin
+PATH=$PATH:$GOPATH:$GOBIN
+
 #Aliases
 alias ls="ls -laG"
 
