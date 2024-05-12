@@ -48,7 +48,7 @@ Mapper.map(
 
 Mapper.map(
   'n',
-  '<leader>f',
+  '<leader>g',
   "<cmd>lua require('telescope.builtin').live_grep()<cr>",
   {
     silent = true,
