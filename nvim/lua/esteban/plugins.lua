@@ -25,10 +25,16 @@ return require('packer').startup(function(use)
   }
 
   -- Theme
+  use 'cormacrelf/dark-notify'
+  require('dark_notify').run()
+
   use { "catppuccin/nvim", as = "catppuccin" }
   require("catppuccin").setup({
-    flavour = "mocha",
-    transparent_background = true
+    transparent_background = true,
+    background = {
+      light = "latte",
+      dark = "mocha",
+    },
   })
   vim.cmd.colorscheme "catppuccin"
 
