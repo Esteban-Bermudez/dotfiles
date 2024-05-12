@@ -9,6 +9,27 @@ require("telescope").setup {
         ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
       },
     },
-  }
+  },
+  pickers = {
+    find_files = {
+      find_command = { "rg", "--files", "--hidden", "--no-ignore", "!.git" },
+    },
+    git_files = {
+      recurse_submodules = false
+    },
+    buffers = {
+      theme = "dropdown",
+    },
+    current_buffer_fuzzy_find = {
+      theme = "dropdown",
+    },
+  },
 }
-print("Telescope loaded")
+
+-- fall back to find_files if git_files can't find anything
+require("telescope.config").project_files = function(opts)
+  local ok = pcall(require("telescope.builtin").git_files, opts)
+  if not ok then
+    require("telescope.builtin").find_files(opts)
+  end
+end

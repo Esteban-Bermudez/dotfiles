@@ -6,10 +6,23 @@ vim.cmd 'vnoremap K \\<noop>'
 vim.cmd 'nnoremap <c-w>o \\<noop>'
 vim.cmd 'vnoremap <c-w>o \\<noop>'
 
--- Telescope Stuff
+-- Telescope
 Mapper.map(
   'n',
   '<leader><leader>',
+  "<cmd>lua require('telescope.config').project_files()<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Telescope",
+  "git_files + find_files",
+  "Search for git files and fall back to find_files if git_files can't find anything"
+)
+
+Mapper.map(
+  'n',
+  '<leader>ff',
   "<cmd>lua require('telescope.builtin').find_files()<cr>",
   {
     silent = true,
