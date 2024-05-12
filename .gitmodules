@@ -4,3 +4,6 @@
 [submodule "zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "tmux/tmux-current-pane-hostname"]
+	path = tmux/tmux-current-pane-hostname
+	url = https://github.com/soyuka/tmux-current-pane-hostname
