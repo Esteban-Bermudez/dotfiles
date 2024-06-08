@@ -11,9 +11,6 @@ require("telescope").setup {
     },
   },
   pickers = {
-    find_files = {
-      find_command = { "rg", "--files", "--hidden", "--no-ignore", "!.git" },
-    },
     git_files = {
       recurse_submodules = false
     },
