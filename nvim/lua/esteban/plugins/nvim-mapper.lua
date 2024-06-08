@@ -113,3 +113,17 @@ m_map('n', '<leader>hd', "require('gitsigns').diffthis()", "GitSigns", "diffthis
 m_map('n', '<leader>hD', "require('gitsigns').diffthis('~')", "GitSigns", "diffthis_ignore",
   "Diff this (ignore whitespace)")
 m_map('n', '<leader>td', "require('gitsigns').toggle_deleted()", "GitSigns", "toggle_deleted", "Toggle deleted")
+
+-- LSP format buffer
+Mapper.map(
+  'n',
+  '<leader>w',
+  "<cmd>LspZeroFormat<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "LSP",
+  "buffer_autoformat",
+  "Format buffer"
+)
