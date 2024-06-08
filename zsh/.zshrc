@@ -1,6 +1,9 @@
-Editor
+#Editor
 export EDITOR=nvim
 export VISUAL=nvim
+
+#Config
+export XDG_CONFIG_HOME="$HOME/.config"
 
 #Homebrew
 [[ "$OSTYPE" == "darwin"* ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
