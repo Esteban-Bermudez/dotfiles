@@ -101,6 +101,8 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'christoomey/vim-tmux-navigator'
   use 'm4xshen/autoclose.nvim'
+  require("autoclose").setup()
+
 
   -- Git Signs
   use {
