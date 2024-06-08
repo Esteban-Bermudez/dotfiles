@@ -84,7 +84,7 @@ function prompt_node_version {
 function update_prompt {
   VERSION_PROMPT="$RUBY_PROMPT $NODE_PROMPT"
   NEWLINE=$'\n'
-  PROMPT="%F{cyan}%2~%f %F{magenta}(\$vcs_info_msg_0_)%f ${VERSION_PROMPT}${NEWLINE}%F{green}❯%f "
+  PROMPT="%F{cyan}%2~%f %F{yellow}${vcs_info_msg_0_}%f ${VERSION_PROMPT}${NEWLINE}${ARROW} "
 }
 
 autoload -Uz vcs_info
@@ -100,6 +100,15 @@ precmd_functions+=( prompt_ruby_version)
 precmd_functions+=( prompt_node_version)
 precmd_functions+=( update_prompt)
 
-setopt prompt_subst
-zstyle ':vcs_info:git:*' formats '%b'
+function zle-line-init zle-keymap-select {
+  local blueArrow="%F{blue}❯%f"
+  local greenArrow="%F{green}❯%f"
+  ARROW="${${KEYMAP/vicmd/${blueArrow}}/(main|viins)/${greenArrow}}"
+  update_prompt
+  zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
 
+
+setopt promptsubst
