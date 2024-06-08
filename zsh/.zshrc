@@ -88,7 +88,13 @@ function update_prompt {
 }
 
 autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:git*' formats "%F{yellow}%b%f(%u%c) "
+zstyle ':vcs_info:*' actionformats "%F{yellow}%b%f(%u%c) %F{magenta}%a%f "
+zstyle ':vcs_info:*' stagedstr "%F{green}+%f"
+zstyle ':vcs_info:*' unstagedstr "%F{red}-%f"
+precmd() { vcs_info }
 precmd_functions+=( precmd_vcs_info)
 precmd_functions+=( prompt_ruby_version)
 precmd_functions+=( prompt_node_version)
