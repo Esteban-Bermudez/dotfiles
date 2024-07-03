@@ -25,8 +25,10 @@ return require('packer').startup(function(use)
   }
 
   -- Theme
-  use 'cormacrelf/dark-notify'
-  require('dark_notify').run()
+  if vim.loop.os_uname().sysname == "Darwin" then
+    use 'cormacrelf/dark-notify'
+    require('dark_notify').run()
+  end
 
   use { "catppuccin/nvim", as = "catppuccin" }
   require("catppuccin").setup({
