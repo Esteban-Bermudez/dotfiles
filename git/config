@@ -4,7 +4,6 @@
   lease = !git push --force-with-lease
 [commit]
 	verbose = true
-	template = ~/.gitmessage
 [rebase]
 	autosquash = true
 [user]
