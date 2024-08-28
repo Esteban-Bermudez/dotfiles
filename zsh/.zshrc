@@ -50,7 +50,7 @@ GOBIN=$GOPATH/bin
 PATH=$PATH:$GOBIN
 
 #Aliases
-alias ls="ls -laG"
+alias ls="ls -lG"
 
 alias g="git"
 alias ga="git add"
