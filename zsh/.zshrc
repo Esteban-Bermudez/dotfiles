@@ -9,18 +9,27 @@ export XDG_CONFIG_HOME="$HOME/.config"
 [[ "$OSTYPE" == "darwin"* ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [[ "$OSTYPE" != "darwin"* ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-#envrc
-eval "$(direnv hook zsh)"
 
-#Ruby
-eval "$(rbenv init - zsh)"
+# envrc
+if command -v direnv &> /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
+
+# rbenv
+if command -v rbenv &> /dev/null; then
+    eval "$(rbenv init - zsh)"
+fi
 
 # fnm
-export PATH=/home/$USER/.fnm:$PATH
-eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
+if command -v fnm &> /dev/null; then
+    export PATH=/home/$USER/.fnm:$PATH
+    eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
+fi
 
 # zoxide
-eval "$(zoxide init --cmd cd zsh)"
+if command -v zoxide &> /dev/null; then
+    eval "$(zoxide init --cmd cd zsh)"
+fi
 
 # History
 HISTFILE=~/.zsh_history
@@ -124,7 +133,9 @@ zle -N zle-keymap-select
 
 setopt promptsubst
 
-#neofetch
-if [[ -z "$TMUX" ]]; then
+# neofetch
+if command -v neofetch &> /dev/null; then
+  if [[ -z "$TMUX" ]]; then
     echo -e "\n" && neofetch
+  fi
 fi
