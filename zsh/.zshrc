@@ -28,9 +28,17 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 # Go
-GOPATH=/opt/homebrew/go
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  go env -w GOPATH=/opt/homebrew/go
+  GOPATH=/opt/homebrew/go
+else
+  go env -w GOPATH=/home/linuxbrew/.linuxbrew/go
+  GOPATH=/home/linuxbrew/.linuxbrew/go
+fi
+
+go env -w GOBIN=$GOPATH/bin
 GOBIN=$GOPATH/bin
-PATH=$PATH:$GOPATH:$GOBIN
+PATH=$PATH:$GOBIN
 
 #Aliases
 alias ls="ls -laG"
