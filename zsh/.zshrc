@@ -83,10 +83,18 @@ function prompt_node_version {
   fi
 }
 
+function prompt_python_version_venv {
+  if [ $VIRTUAL_ENV ]; then
+    VENV_PROMPT=" %F{blue} $(python3 --version | sed 's/[Python ]*//g') (${VIRTUAL_ENV##*/})%f"
+  else
+    VENV_PROMPT=""
+  fi
+}
+
 function update_prompt {
-  VERSION_PROMPT="$RUBY_PROMPT $NODE_PROMPT"
+  VERSION_PROMPT="$RUBY_PROMPT$NODE_PROMPT$VENV_PROMPT"
   NEWLINE=$'\n'
-  PROMPT="%F{cyan}%2~%f %F{yellow}${vcs_info_msg_0_}%f ${VERSION_PROMPT}${NEWLINE}${ARROW} "
+  PROMPT="%F{cyan}%2~%f %F{yellow}${vcs_info_msg_0_}%f${VERSION_PROMPT}${NEWLINE}${ARROW} "
 }
 
 autoload -Uz vcs_info
@@ -100,6 +108,7 @@ precmd() { vcs_info }
 precmd_functions+=( precmd_vcs_info)
 precmd_functions+=( prompt_ruby_version)
 precmd_functions+=( prompt_node_version)
+precmd_functions+=( prompt_python_version_venv)
 precmd_functions+=( update_prompt)
 
 function zle-line-init zle-keymap-select {
