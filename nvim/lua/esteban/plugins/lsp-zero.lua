@@ -21,14 +21,23 @@ cmp.setup({
 
 -- to learn how to use mason.nvim with lsp-zero
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
+local to_install = { 'lua_ls' }
 require('mason').setup({})
+if vim.fn.executable('ruby') == 1 then
+  table.insert(to_install, 'standardrb')
+  table.insert(to_install, 'solargraph')
+end
+
+if vim.fn.executable('go') == 1 then
+  table.insert(to_install, 'gopls')
+end
+
+if vim.fn.executable('python3') == 1 then
+  table.insert(to_install, 'pyright')
+end
+
 require('mason-lspconfig').setup({
-  ensure_installed = {
-    'lua_ls',
-    'standardrb',
-    'solargraph',
-    'gopls'
-  },
+  ensure_installed = to_install,
   handlers = {
     lsp_zero.default_setup,
 
@@ -63,6 +72,18 @@ require('mason-lspconfig').setup({
           solargraph = {
             diagnostics = false,
             useBundler = true
+          }
+        }
+      })
+    end,
+
+    pyright = function()
+      require('lspconfig').pyright.setup({
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = 'on'
+            }
           }
         }
       })
