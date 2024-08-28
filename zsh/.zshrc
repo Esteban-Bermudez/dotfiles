@@ -114,3 +114,8 @@ zle -N zle-keymap-select
 
 
 setopt promptsubst
+
+#neofetch
+if [[ -z "$TMUX" ]]; then
+    echo -e "\n" && neofetch
+fi
