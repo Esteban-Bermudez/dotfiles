@@ -21,7 +21,7 @@ vim.cmd("autocmd FileType gitcommit setlocal tw=72 spell spelllang=en_ca")
 
 -- Set color theme
 vim.o.termguicolors = true
-vim.cmd.colorscheme "catppuccin-macchiato"
+vim.cmd.colorscheme "catppuccin-mocha"
 
 -- Enable auto-indentation
 vim.o.autoindent = true
