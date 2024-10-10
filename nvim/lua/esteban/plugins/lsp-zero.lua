@@ -23,7 +23,7 @@ cmp.setup({
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
 local to_install = { 'lua_ls' }
 require('mason').setup({})
-if vim.fn.executable('ruby') == 1 then
+if vim.fn.executable('rbenv') == 1 then
   table.insert(to_install, 'standardrb')
   table.insert(to_install, 'solargraph')
 end
