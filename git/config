@@ -1,7 +1,11 @@
 [alias]
   brunt = "!f() { git checkout $(git branch --sort=-committerdate | fzy -q "${@:-''}"); }; f"
   form = !git fetch origin main:main && git rebase -i main
+  ford = !git fetch origin develop:develop && git rebase -i develop
   lease = !git push --force-with-lease
+  append = !git commit --amend --no-edit
+  fixup = !git log --oneline --no-decorate --no-merges | fzf -0 --preview 'git show --color=always --format=oneline {1}' | awk '{print $1}' | xargs -r git commit --fixup
+  refshow =!git reflog | fzf --tmux 85% --preview 'echo {} | cut -c 1-5 | xargs git show --color=always' | cut -c 1-5 | xargs git show
 [commit]
 	verbose = true
 [rebase]
