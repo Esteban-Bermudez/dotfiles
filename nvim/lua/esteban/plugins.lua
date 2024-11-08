@@ -42,6 +42,7 @@ return require('packer').startup(function(use)
 
   -- Github Copilot
   use 'github/copilot.vim'
+  vim.g.copilot_filetypes = { markdown = true, gitcommit = true }
 
   -- Telescope
   use {
