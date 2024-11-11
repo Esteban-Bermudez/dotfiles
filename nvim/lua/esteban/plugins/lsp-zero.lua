@@ -32,10 +32,6 @@ if vim.fn.executable('go') == 1 then
   table.insert(to_install, 'gopls')
 end
 
-if vim.fn.executable('python3') == 1 then
-  table.insert(to_install, 'pyright')
-end
-
 require('mason-lspconfig').setup({
   ensure_installed = to_install,
   handlers = {
@@ -77,16 +73,6 @@ require('mason-lspconfig').setup({
       })
     end,
 
-    pyright = function()
-      require('lspconfig').pyright.setup({
-        settings = {
-          python = {
-            analysis = {
-              typeCheckingMode = 'on'
-            }
-          }
-        }
-      })
     end,
   },
 })
