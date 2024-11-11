@@ -20,6 +20,13 @@ if command -v rbenv &> /dev/null; then
     eval "$(rbenv init - zsh)"
 fi
 
+# pyenv
+if command -v pyenv &> /dev/null; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init - zsh)"
+fi
+
 # fnm
 if command -v fnm &> /dev/null; then
     export PATH=/home/$USER/.fnm:$PATH
