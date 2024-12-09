@@ -65,7 +65,13 @@ alias gc="git commit"
 
 alias bx="bundle exec"
 
-alias dotfiles="nvim ~/.config/"
+dot() {
+    if [ -n "$TMUX" ]; then
+        tmux popup -E -h 80% -w 90% 'nvim ~/.config/'
+    else
+        nvim ~/.config/
+    fi
+}
 
 alias vimp="rg --no-ignore --hidden -g '!.git/' --files | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o nvim"
 alias rscope="rg -g 'spec/**/*_spec.rb' --files | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o bundle exec rspec"
