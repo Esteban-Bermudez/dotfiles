@@ -40,6 +40,14 @@ return require('packer').startup(function(use)
   })
   vim.cmd.colorscheme "catppuccin"
 
+  -- Hex Colours
+  use {
+    "NvChad/nvim-colorizer.lua",
+    config = function()
+      require('colorizer').setup()
+    end
+  }
+
   -- Github Copilot
   use 'github/copilot.vim'
   vim.g.copilot_filetypes = { markdown = true, gitcommit = true }
@@ -84,6 +92,41 @@ return require('packer').startup(function(use)
     },
     config = function()
       require('esteban.plugins.lsp-zero')
+    end
+
+  }
+
+  -- Null LS
+  use {
+    'jay-babu/mason-null-ls.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    requires = {
+      'williamboman/mason.nvim', -- Already included in your LSP Zero setup
+      'nvimtools/none-ls.nvim',  -- none-ls is now null-ls
+    },
+    config = function()
+      require("mason").setup()
+      require("mason-null-ls").setup({
+        ensure_installed = {
+          -- Opt to list sources here, when available in mason.
+          'prettier',
+          'darker',
+          'google_java_format'
+        },
+        automatic_installation = true,
+        handlers = {},
+      })
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.google_java_format.with({
+            filetypes = { "java", "xml" },
+            extra_args = { "--aosp" },
+          }),
+          -- Anything not supported by mason.
+        }
+      })
     end
 
   }
