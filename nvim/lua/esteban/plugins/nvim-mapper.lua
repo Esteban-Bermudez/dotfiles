@@ -127,3 +127,31 @@ Mapper.map(
   "buffer_autoformat",
   "Format buffer"
 )
+
+-- Next Buffer by pressing tab
+Mapper.map(
+  'n',
+  '<tab>',
+  "<cmd>bnext<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Buffer",
+  "next",
+  "Next buffer"
+)
+
+-- Previous Buffer by pressing shift + tab
+Mapper.map(
+  'n',
+  '<s-tab>',
+  "<cmd>bprevious<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Buffer",
+  "previous",
+  "Previous buffer"
+)
