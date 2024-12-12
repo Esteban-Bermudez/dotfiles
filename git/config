@@ -17,3 +17,5 @@
 	name = Esteban-Bermudez
 [core]
 	excludesfile = ~/.config/git/ignore
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
