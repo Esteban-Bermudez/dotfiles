@@ -19,6 +19,8 @@ vim.o.expandtab = true
 -- Additional settings for Git commit messages
 vim.cmd("autocmd FileType gitcommit setlocal tw=72 spell spelllang=en_ca")
 
+vim.cmd("autocmd FileType markdown setlocal tw=120 spell spelllang=en_ca")
+
 -- Set color theme
 vim.o.termguicolors = true
 vim.cmd.colorscheme "catppuccin-mocha"
