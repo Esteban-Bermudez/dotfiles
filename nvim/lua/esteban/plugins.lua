@@ -164,6 +164,8 @@ return require('packer').startup(function(use)
     requires = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
       require('esteban.plugins.lualine')
+      vim.opt.showmode = false
+      vim.opt.cmdheight = 0
     end
   }
 
