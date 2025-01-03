@@ -8,6 +8,8 @@
   fixup = !git log --oneline --no-decorate --no-merges | fzf -0 --preview 'git show --color=always --format=oneline {1}' | awk '{print $1}' | xargs -r git commit --fixup
   refshow =!git reflog | fzf --tmux 85% --preview 'echo {} | cut -c 1-5 | xargs git show --color=always' | cut -c 1-5 | xargs git show
   rename = "!f() { git branch -m $(git rev-parse --abbrev-ref HEAD) $1; }; f"
+  track = !git config --local status.showUntrackedFiles normal
+  untrack = !git config --local status.showUntrackedFiles no
 [commit]
 	verbose = true
 [rebase]
