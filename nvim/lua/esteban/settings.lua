@@ -23,7 +23,6 @@ vim.cmd("autocmd FileType markdown setlocal tw=120 spell spelllang=en_ca")
 
 -- Set color theme
 vim.o.termguicolors = true
-vim.cmd.colorscheme "catppuccin-mocha"
 
 -- Enable auto-indentation
 vim.o.autoindent = true

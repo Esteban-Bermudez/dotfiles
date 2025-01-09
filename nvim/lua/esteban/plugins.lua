@@ -32,13 +32,16 @@ return require('packer').startup(function(use)
 
   use { "catppuccin/nvim", as = "catppuccin" }
   require("catppuccin").setup({
-    transparent_background = true,
+    -- transparent_background = true,
     background = {
       light = "latte",
       dark = "mocha",
     },
   })
-  vim.cmd.colorscheme "catppuccin"
+  -- vim.cmd.colorscheme "catppuccin"
+
+  use "rebelot/kanagawa.nvim"
+  vim.cmd.colorscheme "kanagawa"
 
   -- Hex Colours
   use {
