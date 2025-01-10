@@ -25,11 +25,6 @@ return require('packer').startup(function(use)
   }
 
   -- Theme
-  if vim.loop.os_uname().sysname == "Darwin" then
-    use 'cormacrelf/dark-notify'
-    require('dark_notify').run()
-  end
-
   use { "catppuccin/nvim", as = "catppuccin" }
   require("catppuccin").setup({
     -- transparent_background = true,
@@ -38,10 +33,33 @@ return require('packer').startup(function(use)
       dark = "mocha",
     },
   })
-  -- vim.cmd.colorscheme "catppuccin"
 
-  use "rebelot/kanagawa.nvim"
-  vim.cmd.colorscheme "kanagawa"
+  use {
+    "rebelot/kanagawa.nvim",
+    config = function()
+      require("kanagawa").setup({
+        theme = "wave",
+        background = {
+          dark = "wave",
+          light = "lotus",
+        }
+      })
+    end
+  }
+
+  if vim.loop.os_uname().sysname == "Darwin" then
+    use 'cormacrelf/dark-notify'
+    require('dark_notify').run(
+      {
+        schemes = {
+          dark = "kanagawa-wave",
+          light = "catppuccin-latte"
+        }
+      }
+    )
+  else
+    vim.cmd.colorscheme "kanagawa"
+  end
 
   -- Hex Colours
   use {
