@@ -8,8 +8,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # Homebrew
 [[ "$OSTYPE" == "darwin"* ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-[[ "$OSTYPE" != "darwin"* ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
 # envrc
 if command -v direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
@@ -48,8 +46,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   go env -w GOPATH=/opt/homebrew/go
   GOPATH=/opt/homebrew/go
 else
-  go env -w GOPATH=/home/linuxbrew/.linuxbrew/go
-  GOPATH=/home/linuxbrew/.linuxbrew/go
+  go env -w GOPATH=$HOME/.go
+  GOPATH=$HOME/.go
 fi
 
 go env -w GOBIN=$GOPATH/bin
@@ -153,8 +151,8 @@ zle -N zle-keymap-select
 setopt promptsubst
 
 # neofetch
-if command -v neofetch &> /dev/null; then
+if command -v fastfetch &> /dev/null; then
   if [[ -z "$TMUX" ]]; then
-    echo -e "\n" && neofetch
+    echo -e "\n" && fastfetch
   fi
 fi
