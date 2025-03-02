@@ -22,7 +22,17 @@ Mapper.map(
 
 Mapper.map(
   'n',
-  '<leader>ff',
+  '<leader>z',
+  "<cmd>lua require('telescope.builtin').spell_suggest()<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Telescope",
+  "spell_suggest",
+  "Search through spelling suggestions"
+)
+
   "<cmd>lua require('telescope.builtin').find_files()<cr>",
   {
     silent = true,
