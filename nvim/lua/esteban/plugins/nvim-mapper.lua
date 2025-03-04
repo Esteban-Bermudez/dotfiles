@@ -9,7 +9,7 @@ vim.cmd 'vnoremap <c-w>o \\<noop>'
 -- Telescope
 Mapper.map(
   'n',
-  '<leader><leader>',
+  '<leader><leader>g',
   "<cmd>lua require('telescope.config').project_files()<cr>",
   {
     silent = true,
@@ -33,6 +33,10 @@ Mapper.map(
   "Search through spelling suggestions"
 )
 
+
+Mapper.map(
+  'n',
+  '<leader><leader>',
   "<cmd>lua require('telescope.builtin').find_files()<cr>",
   {
     silent = true,
