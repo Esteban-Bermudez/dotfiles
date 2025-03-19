@@ -63,6 +63,14 @@ alias gc="git commit"
 
 alias bx="bundle exec"
 
+cat() {
+  if command -v bat &> /dev/null; then
+    bat "$@"
+  else
+    cat "$@"
+  fi
+}
+
 dot() {
     if [ -n "$TMUX" ]; then
         tmux popup -E -h 80% -w 90% 'nvim ~/.config/'
