@@ -149,7 +149,28 @@ return require('packer').startup(function(use)
         }
       })
     end
+  }
 
+  -- Debugging
+  use {
+    'leoluz/nvim-dap-go',
+    requires = {
+      'mfussenegger/nvim-dap',
+      'rcarriga/nvim-dap-ui',
+      'nvim-neotest/nvim-nio',
+    },
+    config = function()
+      local dap, dapui = require('dap'), require('dapui')
+      local dapgo = require('dap-go')
+      dapui.setup()
+      dapgo.setup()
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+    end
   }
 
   -- Nvim Tree

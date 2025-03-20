@@ -169,3 +169,69 @@ Mapper.map(
   "previous",
   "Previous buffer"
 )
+
+-- Debugging
+Mapper.map(
+  'n',
+  '<leader>5',
+  "<cmd>lua require('dap').continue()<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Debugger",
+  "continue",
+  "Continue/Start debugging"
+)
+
+Mapper.map(
+  'n',
+  '<leader>n',
+  "<cmd>lua require('dap').step_over()<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Debugger",
+  "step_over",
+  "Step over"
+)
+
+Mapper.map(
+  'n',
+  '<leader>8',
+  "<cmd>lua require('dap').step_out()<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Debugger",
+  "step_out",
+  "Step out"
+)
+
+Mapper.map(
+  'n',
+  '<leader>9',
+  "<cmd>lua require('dap').step_into()<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Debugger",
+  "step_into",
+  "Step into"
+)
+
+Mapper.map(
+  'n',
+  '<Leader>sb',
+  "<cmd>lua require('dap').toggle_breakpoint()<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "Debugger",
+  "toggle_breakpoint",
+  "Toggle breakpoint"
+)
