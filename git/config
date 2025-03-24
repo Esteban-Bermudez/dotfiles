@@ -12,6 +12,8 @@
   untrack = !git config --local status.showUntrackedFiles no
 [commit]
 	verbose = true
+[pull]
+	ff = only
 [rebase]
 	autosquash = true
 [user]
