@@ -40,3 +40,16 @@ require('lualine').setup({
     lualine_z = {},
   },
 })
+
+vim.opt.showmode = false
+vim.opt.cmdheight = 0
+vim.api.nvim_create_autocmd("RecordingEnter", {
+  callback = function()
+    vim.opt.cmdheight = 1
+  end,
+})
+vim.api.nvim_create_autocmd("RecordingLeave", {
+  callback = function()
+    vim.opt.cmdheight = 0
+  end,
+})
