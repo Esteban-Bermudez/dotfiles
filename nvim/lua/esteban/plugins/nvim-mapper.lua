@@ -235,3 +235,39 @@ Mapper.map(
   "toggle_breakpoint",
   "Toggle breakpoint"
 )
+
+-- Make it so that when i press leader y it yanks but into macOS system
+-- clipboard with "+y
+Mapper.map(
+  'v',
+  '<leader>y',
+  '"+y',
+  {
+    silent = true,
+    noremap = true
+  },
+  {
+    silent = true,
+    noremap = true
+  },
+  "Clipboard Visual",
+  "copy_to_clipboard",
+  "Copy to clipboard"
+)
+
+Mapper.map(
+  'n',
+  '<leader>y',
+  '"+y',
+  {
+    silent = true,
+    noremap = true
+  },
+  {
+    silent = true,
+    noremap = true
+  },
+  "Clipboard Normal",
+  "copy_to_clipboard",
+  "Copy to clipboard"
+)
