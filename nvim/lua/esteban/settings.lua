@@ -19,7 +19,15 @@ vim.o.expandtab = true
 -- Additional settings for Git commit messages
 vim.cmd("autocmd FileType gitcommit setlocal tw=72 spell spelllang=en_ca")
 
+-- Additional settings for Markdown files
 vim.cmd("autocmd FileType markdown setlocal tw=120 spell spelllang=en_ca")
+
+-- Add filetype for MDX files
+vim.filetype.add({
+  extension = {
+    mdx = 'mdx'
+  }
+})
 
 -- Set color theme
 vim.o.termguicolors = true

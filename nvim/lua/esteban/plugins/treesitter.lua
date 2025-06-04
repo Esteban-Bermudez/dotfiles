@@ -7,3 +7,4 @@ require 'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = true
   },
 }
+vim.treesitter.language.register('markdown', 'mdx')
