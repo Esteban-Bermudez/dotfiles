@@ -7,3 +7,6 @@
 [submodule "tmux/tmux-current-pane-hostname"]
 	path = tmux/tmux-current-pane-hostname
 	url = https://github.com/soyuka/tmux-current-pane-hostname
+[submodule "tmux/tmux-resurrect"]
+  path = tmux/tmux-resurrect
+  url = https://github.com/tmux-plugins/tmux-resurrect
