@@ -1,3 +1,4 @@
+require("nvim-mapper").setup {}
 Mapper = require("nvim-mapper")
 
 -- Disable annoying things:
@@ -251,8 +252,8 @@ Mapper.map(
     noremap = true
   },
   "Clipboard Visual",
-  "copy_to_clipboard",
-  "Copy to clipboard"
+  "copy_to_clipboard_visual",
+  "Copy to clipboard in visual mode"
 )
 
 Mapper.map(
