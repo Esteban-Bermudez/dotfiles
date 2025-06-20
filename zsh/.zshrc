@@ -86,6 +86,19 @@ alias c="clear"
 alias lg="lazygit"
 alias sourceall="source ~/.config/zsh/.zshrc && tmux source ~/.config/tmux/tmux.conf"
 
+tsesh() {
+    session=$(tmux ls | fzf | cut -d: -f1)
+    if [[ -z "$TMUX" ]]; then
+        if [ -n "$session" ]; then
+            tmux attach-session -t "$session"
+        fi
+    else
+        if [ -n "$session" ]; then
+            tmux switch -t "$session"
+        fi
+    fi
+}
+
 # zsh Plugins
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
