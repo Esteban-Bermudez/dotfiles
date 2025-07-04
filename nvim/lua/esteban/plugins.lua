@@ -61,7 +61,7 @@ return require("packer").startup(function(use)
 
 	-- Hex Colours
 	use({
-		"NvChad/nvim-colorizer.lua",
+		"catgoose/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
 		end,
@@ -109,6 +109,7 @@ return require("packer").startup(function(use)
 		config = function()
 			require("esteban.plugins.lsp-zero")
 		end,
+		before = "tailwind-tools.nvim",
 	})
 
 	-- Null LS
@@ -202,6 +203,17 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({
+		"luckasRanarison/tailwind-tools.nvim",
+		config = function()
+			require("tailwind-tools").setup()
+		end,
+		requires = {
+			"nvim-treesitter/nvim-treesitter",
+			"neovim/nvim-lspconfig",
+			"nvim-telescope/telescope.nvim",
+		},
+	})
 	-- My plugins here
 	-- use 'foo1/bar1.nvim'
 	-- use 'foo2/bar2.nvim'
