@@ -213,6 +213,7 @@ return require("packer").startup(function(use)
 			"neovim/nvim-lspconfig",
 			"nvim-telescope/telescope.nvim",
 		},
+    after = "lsp-zero.nvim",
 	})
 	-- My plugins here
 	-- use 'foo1/bar1.nvim'
