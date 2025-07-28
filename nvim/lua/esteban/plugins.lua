@@ -203,6 +203,36 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+  use({
+    "kawre/leetcode.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("leetcode").setup({
+        lang ="golang",
+        hooks = {
+          enter = function()
+            vim.cmd("Copilot disable")
+          end,
+          leave = function()
+            vim.cmd("Copilot enable")
+          end,
+        },
+        injector = {
+          golang = {
+            imports = function()
+              return { "package main" }
+            end,
+          },
+        },
+
+      })
+    end,
+  })
+
 	use({
 		"luckasRanarison/tailwind-tools.nvim",
 		config = function()
