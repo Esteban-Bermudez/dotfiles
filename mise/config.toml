@@ -1,0 +1,8 @@
+[tools]
+fastfetch = "latest"
+fzf = "latest"
+go = "latest"
+lazygit = "latest"
+neovim = "latest"
+rg = "latest"
+zoxide = "latest"
