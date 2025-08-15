@@ -11,29 +11,6 @@ eval "$($HOME/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
 # Homebrew
 [[ "$OSTYPE" == "darwin"* ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# envrc
-if command -v direnv &> /dev/null; then
-    eval "$(direnv hook zsh)"
-fi
-
-# rbenv
-if command -v rbenv &> /dev/null; then
-    eval "$(rbenv init - zsh)"
-fi
-
-# pyenv
-if command -v pyenv &> /dev/null; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init - zsh)"
-fi
-
-# fnm
-if command -v fnm &> /dev/null; then
-    export PATH=/home/$USER/.fnm:$PATH
-    eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
-fi
-
 # zoxide
 if command -v zoxide &> /dev/null; then
     eval "$(zoxide init --cmd cd zsh)"
@@ -43,19 +20,6 @@ fi
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-
-# Go
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  go env -w GOPATH=/opt/homebrew/go
-  GOPATH=/opt/homebrew/go
-else
-  go env -w GOPATH=$HOME/.go
-  GOPATH=$HOME/.go
-fi
-
-go env -w GOBIN=$GOPATH/bin
-GOBIN=$GOPATH/bin
-PATH=$PATH:$GOBIN
 
 #Aliases
 alias ls="ls -lG"
