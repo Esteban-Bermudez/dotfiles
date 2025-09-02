@@ -30,6 +30,9 @@ alias gc="git commit"
 
 alias bx="bundle exec"
 
+alias d="docker"
+alias n="nvim"
+
 cat() {
   if command -v bat &> /dev/null; then
     bat "$@"
@@ -52,6 +55,10 @@ alias rscope="rg -g 'spec/**/*_spec.rb' --files | fzf-tmux -p -w 90% -h 80% --re
 alias c="clear"
 alias lg="lazygit"
 alias sourceall="source ~/.config/zsh/.zshrc && tmux source ~/.config/tmux/tmux.conf"
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 tsesh() {
     session=$(tmux ls | fzf | cut -d: -f1)
