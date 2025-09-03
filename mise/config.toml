@@ -1,4 +1,6 @@
 [tools]
+bat = "latest"
+eza = "latest"
 fastfetch = "latest"
 fzf = "latest"
 go = "latest"

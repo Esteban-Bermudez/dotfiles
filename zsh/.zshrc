@@ -22,7 +22,10 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 #Aliases
-alias ls="ls -lG"
+alias ls='eza -lh --group-directories-first --icons=auto'
+alias lsa='ls -a'
+alias lt='eza --tree --level=2 --long --icons --git'
+alias lta='lt -a'
 
 alias g="git"
 alias ga="git add"
@@ -32,6 +35,8 @@ alias bx="bundle exec"
 
 alias d="docker"
 alias n="nvim"
+alias c="clear"
+alias lg="lazygit"
 
 cat() {
   if command -v bat &> /dev/null; then
@@ -52,8 +57,14 @@ dot() {
 alias vimp="rg --no-ignore --hidden -g '!.git/' --files | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o nvim"
 alias rscope="rg -g 'spec/**/*_spec.rb' --files | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o bundle exec rspec"
 
-alias c="clear"
-alias lg="lazygit"
+ff() {
+  if command -v bat &> /dev/null; then
+    fzf-tmux -p -w 90% -h 90% --reverse --preview 'bat --style=numbers --color=always {}'
+  else
+    fzf-tmux -p -w 90% -h 90% --reverse --preview 'cat {}'
+  fi
+}
+
 alias sourceall="source ~/.config/zsh/.zshrc && tmux source ~/.config/tmux/tmux.conf"
 
 alias ..='cd ..'
