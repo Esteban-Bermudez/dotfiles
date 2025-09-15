@@ -17,7 +17,7 @@ return require("packer").startup(function(use)
 
 	-- Mapper
 	use({
-		"gregorias/nvim-mapper",
+		"Esteban-Bermudez/nvim-mapper",
 		config = function()
 			require("esteban.plugins.nvim-mapper")
 		end,
