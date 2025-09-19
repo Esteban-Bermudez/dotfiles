@@ -272,3 +272,56 @@ Mapper.map(
   "copy_to_clipboard",
   "Copy to clipboard"
 )
+
+-- LeetCode
+Mapper.map(
+  'n',
+  '<leader>ll',
+  "<cmd>Leet list<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "LeetCode List",
+  "leet_list",
+  "Choose a LeetCode problem"
+)
+
+Mapper.map(
+  'n',
+  '<leader>ld',
+  "<cmd>Leet desc<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "LeetCode Description",
+  "leet_desc",
+  "Show problem description"
+)
+
+Mapper.map(
+  'n',
+  '<leader>lc',
+  "<cmd>Leet console<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "LeetCode Console",
+  "leet_console",
+  "Open test console"
+)
+
+Mapper.map(
+  'n',
+  '<leader>lr',
+  "<cmd>Leet run<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "LeetCode Run",
+  "leet_run",
+  "Run code against test cases"
+)
