@@ -136,8 +136,8 @@ return require("packer").startup(function(use)
 				ensure_installed = {
 					-- Opt to list sources here, when available in mason.
 					"prettier",
-					"darker",
 					"google_java_format",
+					"golines",
 				},
 				automatic_installation = true,
 				handlers = {},
@@ -146,6 +146,9 @@ return require("packer").startup(function(use)
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.prettier,
+					null_ls.builtins.formatting.golines.with({
+						extra_args = { "--shorten-comments" },
+					}),
 					null_ls.builtins.formatting.google_java_format.with({
 						filetypes = { "java", "xml" },
 						extra_args = { "--aosp" },
