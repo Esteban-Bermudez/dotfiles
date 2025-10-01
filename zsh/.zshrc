@@ -57,16 +57,19 @@ dot() {
     fi
 }
 
-alias vimp="rg --no-ignore --hidden -g '!.git/' --files | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o nvim"
-alias rscope="rg -g 'spec/**/*_spec.rb' --files | fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o bundle exec rspec"
-
 ff() {
   if command -v bat &> /dev/null; then
-    fzf-tmux -p -w 90% -h 90% --reverse --preview 'bat --style=numbers --color=always {}'
+    fzf-tmux -p -w 90% -h 90% --preview 'bat --style=numbers --color=always {}'
   else
-    fzf-tmux -p -w 90% -h 90% --reverse --preview 'cat {}'
+    fzf-tmux -p -w 90% -h 90% --preview 'cat {}'
   fi
 }
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden -g "!.git/"'
+# alias vimp="fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o nvim"
+alias nff="ff | xargs -o nvim"
+alias rscope="rg -g 'spec/**/*_spec.rb' --files | ff | xargs -o bundle exec rspec"
+
 
 alias sourceall="source ~/.config/zsh/.zshrc && tmux source ~/.config/tmux/tmux.conf"
 
