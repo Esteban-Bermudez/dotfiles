@@ -18,8 +18,11 @@ fi
 
 # History
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+HISTSIZE=100000
+SAVEHIST=100000
 
 #Aliases
 alias ls='eza -lh --group-directories-first --icons=auto'
