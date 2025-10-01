@@ -1,2 +1,2 @@
-require 'esteban.settings'
-require 'esteban.plugins'
+require("esteban.lazy")
+require("esteban.bindings")

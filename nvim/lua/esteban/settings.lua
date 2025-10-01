@@ -1,9 +1,9 @@
 -- Leader
-vim.g.mapleader = ','
-vim.g.maplocalleader = ','
+vim.g.mapleader = ","
+vim.g.maplocalleader = "\\"
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-     
+
 -- Enable line numbers
 vim.o.number = true
 
@@ -32,4 +32,3 @@ vim.o.autoindent = true
 -- Enable  incremental search and do not maintain highlighting
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-

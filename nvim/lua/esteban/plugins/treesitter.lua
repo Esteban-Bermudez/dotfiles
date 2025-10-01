@@ -1,10 +1,17 @@
-require 'nvim-treesitter.configs'.setup {
-  ensure_installed = {
-    'ruby', 'html', 'css', 'javascript', 'python', 'typescript', 'svelte', 'markdown', 'lua', 'scss', 'go',
-  },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = true
-  },
+return {
+	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
+	build = ":TSUpdate", -- Automatically update parsers on plugin build
+	config = function()
+		require("nvim-treesitter.configs").setup({
+			-- Configure treesitter modules
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = true,
+			},
+			indent = { enable = true },
+			folds = { enable = true },
+		})
+		vim.treesitter.language.register("markdown", "mdx")
+	end,
 }
-vim.treesitter.language.register('markdown', 'mdx')
