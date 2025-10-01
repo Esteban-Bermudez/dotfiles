@@ -87,11 +87,11 @@ Mapper.map(
   "Fuzzy find in current buffer"
 )
 
---nvimtree
+-- NvimTree
 Mapper.map(
   'n',
-  '<leader>e',
-  "<cmd>NvimTreeToggle<cr>",
+  '<leader>E',
+  "<cmd>NvimTreeToggle .<cr>",
   {
     silent = true,
     noremap = true
@@ -99,6 +99,19 @@ Mapper.map(
   "NvimTree",
   "Toggle",
   "Toggle NvimTree"
+)
+
+Mapper.map(
+  'n',
+  '<leader>e',
+  "<cmd>NvimTreeFindFileToggle .<cr>",
+  {
+    silent = true,
+    noremap = true
+  },
+  "NvimTree",
+  "Toggle with File",
+  "Toggle NvimTree with current file"
 )
 
 -- GitSigns

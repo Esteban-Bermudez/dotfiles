@@ -175,7 +175,7 @@ return require("packer").startup(function(use)
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
-			require("nvim-tree").setup()
+			require("esteban.plugins.nvim-tree")
 		end,
 	})
 
