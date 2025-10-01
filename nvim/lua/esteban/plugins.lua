@@ -91,6 +91,16 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+  -- Mdx
+  use {("davidmh/mdx.nvim"),
+    requires = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("mdx").setup({})
+    end
+  }
+
 	-- LSP Zero
 	use({
 		"VonHeikemen/lsp-zero.nvim",
