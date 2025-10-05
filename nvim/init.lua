@@ -1,2 +1,2 @@
-require("esteban.lazy")
-require("esteban.bindings")
+require("config.lazy")
+require("config.bindings")

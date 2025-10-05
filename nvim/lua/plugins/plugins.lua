@@ -10,59 +10,6 @@ return {
 		end,
 	},
 
-	-- Theme
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		config = function()
-			require("catppuccin").setup({
-				-- transparent_background = true,
-				background = {
-					light = "latte",
-					dark = "mocha",
-				},
-			})
-		end,
-	},
-
-	{
-		"rebelot/kanagawa.nvim",
-		config = function()
-			require("kanagawa").setup({
-				theme = "wave",
-				background = {
-					dark = "wave",
-					light = "lotus",
-				},
-			})
-		end,
-	},
-
-	-- Dark Notify
-	{
-		"cormacrelf/dark-notify",
-		lazy = false, -- This plugin needs to be loaded eagerly to set the colorscheme
-		condition = vim.loop.os_uname().sysname == "Darwin", -- Only load on MACOS
-		config = function()
-			require("dark_notify").run({
-				schemes = {
-					dark = "kanagawa-wave",
-					light = "catppuccin-latte",
-				},
-			})
-		end,
-	},
-
-	-- Hex Colours
-	{
-		"catgoose/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
-	},
-
-	-- Github Copilot
-	"github/copilot.vim", -- Simple use becomes a string
 
 	-- Mdx
 	{
@@ -129,17 +76,6 @@ return {
 					},
 				},
 			})
-		end,
-	},
-
-	-- Vim Plugins
-	"tpope/vim-commentary",
-	"tpope/vim-surround",
-	"christoomey/vim-tmux-navigator",
-	{
-		"m4xshen/autoclose.nvim",
-		config = function()
-			require("autoclose").setup()
 		end,
 	},
 
