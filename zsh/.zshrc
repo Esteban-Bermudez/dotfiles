@@ -27,7 +27,7 @@ SAVEHIST=100000
 #Aliases
 alias ls='eza -lh --group-directories-first --icons=auto'
 alias lsa='ls -a'
-alias lt='eza --tree --level=2 --long --icons --git'
+alias lt='eza --tree --level=3 --long --icons --git'
 alias lta='lt -a'
 
 alias g="git"
