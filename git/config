@@ -11,6 +11,7 @@
   rename = "!f() { git branch -m $(git rev-parse --abbrev-ref HEAD) $1; }; f"
   track = !git config --local status.showUntrackedFiles normal
   untrack = !git config --local status.showUntrackedFiles no
+  newb = "!f() { git checkout -b esteban/$1; }; f"
 [commit]
 	verbose = true
 [pull]
@@ -24,3 +25,5 @@
 	excludesfile = ~/.config/git/ignore
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
+[push]
+	autoSetupRemote = true
