@@ -10,7 +10,6 @@ return {
 		end,
 	},
 
-
 	-- Mdx
 	{
 		"davidmh/mdx.nvim",
@@ -36,7 +35,6 @@ return {
 				ensure_installed = {
 					"prettier",
 					"google_java_format",
-					"golines",
 				},
 				automatic_installation = true,
 				handlers = {},
@@ -45,9 +43,6 @@ return {
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.prettier,
-					null_ls.builtins.formatting.golines.with({
-						extra_args = { "--shorten-comments" },
-					}),
 					null_ls.builtins.formatting.google_java_format.with({
 						filetypes = { "java", "xml" },
 						extra_args = { "--aosp" },
@@ -58,26 +53,26 @@ return {
 	},
 
 	-- Debugging
-	{
-		"leoluz/nvim-dap-go",
-		dependencies = { -- 'requires' becomes 'dependencies'
-			"mfussenegger/nvim-dap",
-			"rcarriga/nvim-dap-ui",
-			"nvim-neotest/nvim-nio",
-		},
-		config = function()
-			require("dap-go").setup({
-				dap_configurations = {
-					{
-						type = "go",
-						name = "Attach remote",
-						mode = "remote",
-						request = "attach",
-					},
-				},
-			})
-		end,
-	},
+	-- {
+	-- 	"leoluz/nvim-dap-go",
+	-- 	dependencies = { -- 'requires' becomes 'dependencies'
+	-- 		"mfussenegger/nvim-dap",
+	-- 		"rcarriga/nvim-dap-ui",
+	-- 		"nvim-neotest/nvim-nio",
+	-- 	},
+	-- 	config = function()
+	-- 		require("dap-go").setup({
+	-- 			dap_configurations = {
+	-- 				{
+	-- 					type = "go",
+	-- 					name = "Attach remote",
+	-- 					mode = "remote",
+	-- 					request = "attach",
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	{
 		"kawre/leetcode.nvim",
