@@ -2,3 +2,7 @@
 /spec/examples.txt
 spec/examples.txt
 **/spec/examples.txt
+.vscode/*
+.idea/*
+.DS_Store
+**/.DS_Store
