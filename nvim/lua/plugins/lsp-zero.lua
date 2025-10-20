@@ -60,6 +60,16 @@ return {
 						})
 					end,
 
+					harper_ls = function()
+						require("lspconfig").harper_ls.setup({
+							settings = {
+								["harper-ls"] = {
+									filetypes = { "gitcommit", "markdown" },
+								},
+							},
+						})
+					end,
+
 					rubocop = function()
 						require("lspconfig").rubocop.setup({
 							cmd = { "rubocop", "--lsp" },
