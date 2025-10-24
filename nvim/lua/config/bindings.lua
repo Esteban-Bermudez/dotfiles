@@ -108,10 +108,10 @@ m_map(
 m_map("n", "<leader>td", "require('gitsigns').toggle_deleted()", "GitSigns", "toggle_deleted", "Toggle deleted")
 
 -- LSP format buffer
-Mapper.map("n", "<leader>w", "<cmd>LspZeroFormat<cr>", {
+Mapper.map("n", "<leader>w", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", {
 	silent = true,
 	noremap = true,
-}, "LSP", "buffer_autoformat", "Format buffer")
+}, "LSP", "lsp_buffer_format", "Format buffer")
 
 -- Next Buffer by pressing tab
 Mapper.map("n", "<tab>", "<cmd>bnext<cr>", {

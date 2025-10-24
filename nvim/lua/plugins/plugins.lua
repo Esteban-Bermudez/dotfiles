@@ -22,35 +22,35 @@ return {
 	},
 
 	-- Null LS
-	{
-		"jay-babu/mason-null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { -- 'requires' becomes 'dependencies'
-			"williamboman/mason.nvim",
-			"nvimtools/none-ls.nvim", -- none-ls is now null-ls
-		},
-		config = function()
-			require("mason").setup()
-			require("mason-null-ls").setup({
-				ensure_installed = {
-					"prettier",
-					"google_java_format",
-				},
-				automatic_installation = true,
-				handlers = {},
-			})
-			local null_ls = require("null-ls")
-			null_ls.setup({
-				sources = {
-					null_ls.builtins.formatting.prettier,
-					null_ls.builtins.formatting.google_java_format.with({
-						filetypes = { "java", "xml" },
-						extra_args = { "--aosp" },
-					}),
-				},
-			})
-		end,
-	},
+	-- {
+	-- 	"jay-babu/mason-null-ls.nvim",
+	-- 	event = { "BufReadPre", "BufNewFile" },
+	-- 	dependencies = { -- 'requires' becomes 'dependencies'
+	-- 		"williamboman/mason.nvim",
+	-- 		"nvimtools/none-ls.nvim", -- none-ls is now null-ls
+	-- 	},
+	-- 	config = function()
+	-- 		require("mason").setup()
+	-- 		require("mason-null-ls").setup({
+	-- 			ensure_installed = {
+	-- 				"prettier",
+	-- 				"google_java_format",
+	-- 			},
+	-- 			automatic_installation = true,
+	-- 			handlers = {},
+	-- 		})
+	-- 		local null_ls = require("null-ls")
+	-- 		null_ls.setup({
+	-- 			sources = {
+	-- 				null_ls.builtins.formatting.prettier,
+	-- 				null_ls.builtins.formatting.google_java_format.with({
+	-- 					filetypes = { "java", "xml" },
+	-- 					extra_args = { "--aosp" },
+	-- 				}),
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- Debugging
 	-- {
