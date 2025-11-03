@@ -11,6 +11,17 @@ vim.api.nvim_create_autocmd("RecordingLeave", {
 	end,
 })
 
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed
+    }
+  end
+end
+
 return {
 	-- Hex Colours
 	{
@@ -58,7 +69,7 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { "diff", "branch" },
+        lualine_b = { {'diff', source = diff_source}, {'b:gitsigns_head', icon = ''}, },
         lualine_c = { { "filename", path = 1, file_status = false, symbols = { modified = "●", unnamed = "~" } } },
         lualine_x = { { "filetype", icon_only = false, align = "right" } },
         lualine_y = { "diagnostics" },
