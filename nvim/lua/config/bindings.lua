@@ -106,6 +106,23 @@ m_map(
 	"Diff this (ignore whitespace)"
 )
 m_map("n", "<leader>td", "require('gitsigns').toggle_deleted()", "GitSigns", "toggle_deleted", "Toggle deleted")
+m_map(
+  "n",
+  "]c",
+  "require('gitsigns').next_hunk()",
+  "GitSigns",
+  "next_hunk",
+  "Next hunk"
+)
+
+m_map(
+  "n",
+  "[c",
+  "require('gitsigns').prev_hunk()",
+  "GitSigns",
+  "prev_hunk",
+  "Previous hunk"
+)
 
 -- LSP format buffer
 Mapper.map("n", "<leader>w", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", {
