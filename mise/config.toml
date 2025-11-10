@@ -8,3 +8,7 @@ lazygit = "latest"
 neovim = "latest"
 rg = "latest"
 zoxide = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node", "ruby"]
+experimental = false
