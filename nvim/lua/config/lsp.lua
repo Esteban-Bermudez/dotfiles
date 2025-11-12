@@ -71,3 +71,7 @@ vim.lsp.config("ruby_lsp", {
     }
   }
 })
+
+-- Enable ruby_lsp. This will show a warning if the server is not installed for
+-- the specific ruby version used in the project.
+vim.lsp.enable("ruby_lsp")

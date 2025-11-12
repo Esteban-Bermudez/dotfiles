@@ -9,7 +9,6 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"gopls",
-				"ruby_lsp",
 			},
 		},
 		dependencies = {
