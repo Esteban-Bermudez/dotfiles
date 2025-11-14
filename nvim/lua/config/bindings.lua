@@ -124,12 +124,6 @@ m_map(
   "Previous hunk"
 )
 
--- LSP format buffer
-Mapper.map("n", "<leader>w", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", {
-	silent = true,
-	noremap = true,
-}, "LSP", "lsp_buffer_format", "Format buffer")
-
 -- Next Buffer by pressing tab
 Mapper.map("n", "<tab>", "<cmd>bnext<cr>", {
 	silent = true,

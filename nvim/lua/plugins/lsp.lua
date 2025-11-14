@@ -1,8 +1,10 @@
 return {
+	-- RBS support
 	{
 		"jlcrochet/vim-rbs",
 		ft = { "ruby", "rbs" },
 	},
+	-- LSP Configuration & Plugins
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
@@ -17,6 +19,7 @@ return {
 		},
 	},
 
+	-- Completion
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -43,5 +46,55 @@ return {
 				},
 			})
 		end,
+	},
+
+	-- Formatting
+	{
+		"stevearc/conform.nvim",
+		dependencies = { "mason.nvim" },
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo", "ConformFormat" },
+		keys = {
+			-- Format code with conform and exit visual mode if needed
+			vim.keymap.set({ "n", "v" }, "<leader>w", function()
+				require("conform").format({ async = true }, function(err)
+					if not err then
+						local mode = vim.api.nvim_get_mode().mode
+						if vim.startswith(string.lower(mode), "v") then
+							vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+						end
+					end
+				end)
+			end, { desc = "Format code" }),
+		},
+		opts = {
+			default_format_opts = {
+				timeout_ms = 3000,
+				async = false, -- not recommended to change
+				quiet = false, -- not recommended to change
+				lsp_format = "fallback", -- not recommended to change
+			},
+			formatters_by_ft = {
+				lua = { "stylua" },
+				go = { "goimports" },
+			},
+			-- The options you set here will be merged with the builtin formatters.
+			-- You can also define any custom formatters here.
+			formatters = {
+
+				injected = { options = { ignore_errors = true } },
+				-- # Example of using dprint only when a dprint.json file is present
+				-- dprint = {
+				--   condition = function(ctx)
+				--     return vim.fs.find({ "dprint.json" }, { path = ctx.filename, upward = true })[1]
+				--   end,
+				-- },
+				--
+				-- # Example of using shfmt with extra args
+				-- shfmt = {
+				--   prepend_args = { "-i", "2", "-ci" },
+				-- },
+			},
+		},
 	},
 }
