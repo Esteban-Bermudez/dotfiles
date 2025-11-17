@@ -12,6 +12,7 @@
   track = !git config --local status.showUntrackedFiles normal
   untrack = !git config --local status.showUntrackedFiles no
   newb = "!f() { git checkout -b esteban/$1; }; f"
+	logf = !git log --oneline | fzf --preview \"echo {} | awk '{print \\$1 }' | xargs git show --color=always\"
 [commit]
 	verbose = true
 [pull]
