@@ -68,6 +68,7 @@ ff() {
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden -g "!.git/"'
 # alias vimp="fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o nvim"
 alias nff="ff | xargs -o nvim"
+alias leetcode="nvim leetcode.nvim"
 alias rscope="rg -g 'spec/**/*_spec.rb' --files | ff | xargs -o bundle exec rspec"
 
 
