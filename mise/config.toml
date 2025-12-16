@@ -1,14 +1,27 @@
 [tools]
 bat = "latest"
+coreutils = "latest"
 eza = "latest"
 fastfetch = "latest"
+fd = "latest"
 fzf = "latest"
+gemini-cli = "latest"
+gh = "latest"
 go = "latest"
+gum = "latest"
+java = "17"
+lazydocker = "latest"
 lazygit = "latest"
+maven = "3.9.0"
 neovim = "latest"
+node = "latest"
+python = "latest"
 rg = "latest"
+ruby = "latest"
+uv = "latest"
+zig = "latest"
 zoxide = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = ["node", "ruby"]
+idiomatic_version_file_enable_tools = ["node", "ruby", "python"]
 experimental = false
