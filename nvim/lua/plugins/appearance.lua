@@ -36,6 +36,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
 		build = ":TSUpdate", -- Automatically update parsers on plugin build
+    cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				-- Configure treesitter modules
