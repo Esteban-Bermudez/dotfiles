@@ -1,5 +1,5 @@
 vim.opt.showmode = false
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 vim.api.nvim_create_autocmd("RecordingEnter", {
 	callback = function()
 		vim.opt.cmdheight = 1
@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("RecordingEnter", {
 })
 vim.api.nvim_create_autocmd("RecordingLeave", {
 	callback = function()
-		vim.opt.cmdheight = 0
+		vim.opt.cmdheight = 1
 	end,
 })
 
