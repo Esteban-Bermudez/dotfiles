@@ -16,9 +16,6 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
-		config = function()
-			require("mdx").setup({})
-		end,
 	},
 
 	-- Debugging
@@ -45,6 +42,7 @@ return {
 
 	{
 		"kawre/leetcode.nvim",
+		build = ":TSUpdate html",
 		dependencies = { -- 'requires' becomes 'dependencies'
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
