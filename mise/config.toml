@@ -1,5 +1,6 @@
 [tools]
 bat = "latest"
+bun = "latest"
 coreutils = "latest"
 eza = "latest"
 fastfetch = "latest"
