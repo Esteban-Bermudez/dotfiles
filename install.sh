@@ -52,6 +52,14 @@ install_tools() {
   fi
 }
 
+# Function to install fonts
+install_fonts() {
+  echo " - Installing Fira Mono Nerd Font..."
+  curl -L -o /tmp/FiraMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraMono.zip
+  unzip -o /tmp/FiraMono.zip -d "$HOME/Library/Fonts/"
+  rm /tmp/FiraMono.zip
+}
+
 # Function to install Kitty terminal emulator
 install_kitty() {
   #curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
@@ -69,10 +77,21 @@ main() {
   check_os
   clone_repo
   create_zshenv
+  echo "Installing mise package manager..."
   install_mise
+  echo "Installing dev tools..."
   install_tools
+  echo "Installing fonts..."
+  install_fonts
+  echo "Installing GUI applications..."
+  # install_docker
+  # install_scroll_reverser
+  # install_rectangle
   install_kitty
-  echo "Setup complete! Please restart your shell for all changes to take effect."
+  echo "------------------------------------------------------------------------"
+  echo "All installations are complete."
+  echo "Setup complete! Please use Kitty as your terminal emulator."
+  echo "------------------------------------------------------------------------"
 }
 
 main
