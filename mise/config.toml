@@ -1,28 +1,25 @@
 [tools]
 bat = "latest"
 bun = "latest"
-coreutils = "latest"
 eza = "latest"
 fastfetch = "latest"
 fd = "latest"
 fzf = "latest"
+"github:tummychow/git-absorb" = "latest"
 gemini-cli = "latest"
 gh = "latest"
 go = "latest"
-gum = "latest"
-java = "17"
 lazydocker = "latest"
 lazygit = "latest"
-maven = "3.9.0"
 neovim = "latest"
 node = "latest"
 python = "latest"
 rg = "latest"
 ruby = "latest"
-uv = "latest"
+tmux = "latest"
 zig = "latest"
 zoxide = "latest"
 
+
 [settings]
-idiomatic_version_file_enable_tools = ["node", "ruby", "python"]
-experimental = false
+idiomatic_version_file_enable_tools = ["node", "ruby"]
