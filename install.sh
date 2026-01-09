@@ -52,6 +52,18 @@ install_tools() {
   fi
 }
 
+# Function to install Kitty terminal emulator
+install_kitty() {
+  #curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+  if ! command -v kitty &> /dev/null; then
+    echo "Installing Kitty terminal emulator..."
+    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    echo "Kitty is now installed. Use this for your terminal emulator."
+  else
+    echo "Kitty is already installed. Skipping installation."
+  fi
+}
+
 # Main function
 main() {
   check_os
@@ -59,6 +71,7 @@ main() {
   create_zshenv
   install_mise
   install_tools
+  install_kitty
   echo "Setup complete! Please restart your shell for all changes to take effect."
 }
 
