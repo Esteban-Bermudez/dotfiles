@@ -117,6 +117,8 @@ function prompt_ruby_version {
 function prompt_node_version {
   if [ -f .node-version ]; then
     NODE_PROMPT=" %F{green}󰎙 $(cat .node-version)%f"
+  elif [ -f .nvmrc ]; then
+    NODE_PROMPT=" %F{green}󰎙 $(cat .nvmrc)%f"
   else
     NODE_PROMPT=""
   fi
