@@ -1,14 +1,14 @@
 vim.opt.showmode = false
 vim.opt.cmdheight = 1
 vim.api.nvim_create_autocmd("RecordingEnter", {
-	callback = function()
-		vim.opt.cmdheight = 1
-	end,
+  callback = function()
+    vim.opt.cmdheight = 1
+  end,
 })
 vim.api.nvim_create_autocmd("RecordingLeave", {
-	callback = function()
-		vim.opt.cmdheight = 1
-	end,
+  callback = function()
+    vim.opt.cmdheight = 1
+  end,
 })
 
 local function diff_source()
@@ -23,33 +23,32 @@ local function diff_source()
 end
 
 return {
-	-- Hex Colours
-	{
-		"catgoose/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
-	},
+  -- Hex Colours
+  {
+    "catgoose/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
 
   -- Treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
-		build = ":TSUpdate", -- Automatically update parsers on plugin build
+  {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate", -- Automatically update parsers on plugin build
     cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				-- Configure treesitter modules
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = true,
-				},
-				indent = { enable = true },
-				folds = { enable = true },
-			})
-			vim.treesitter.language.register("markdown", "mdx")
-		end,
-	},
+    opts = {
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = true,
+      },
+      indent = { enable = true },
+      folds = { enable = true },
+    },
+    config = function()
+      vim.treesitter.language.register("markdown", "mdx")
+    end,
+  },
 
   -- Lualine
   {
@@ -70,7 +69,7 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { {'diff', source = diff_source}, {'b:gitsigns_head', icon = ''}, },
+        lualine_b = { { 'diff', source = diff_source }, { 'b:gitsigns_head', icon = '' }, },
         lualine_c = { { "filename", path = 1, file_status = false, symbols = { modified = "●", unnamed = "~" } } },
         lualine_x = { { "filetype", icon_only = false, align = "right" } },
         lualine_y = { "diagnostics" },
