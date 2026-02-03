@@ -6,7 +6,7 @@ export VISUAL=nvim
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Mise
-eval "$($HOME/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
+eval "$($HOME/.local/bin/mise activate zsh --shims)" # added by https://mise.run/zsh
 
 # Homebrew
 [[ "$OSTYPE" == "darwin"* ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
