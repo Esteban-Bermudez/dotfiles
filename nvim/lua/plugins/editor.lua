@@ -1,13 +1,13 @@
 -- Vim Plugins
 return {
-	"tpope/vim-commentary",
-	"tpope/vim-surround",
+  "tpope/vim-commentary",
+  "tpope/vim-surround",
 
-	-- Tmux integration
-	"christoomey/vim-tmux-navigator",
+  -- Tmux integration
+  "christoomey/vim-tmux-navigator",
 
-	-- Github Copilot
-	"github/copilot.vim",
+  -- Github Copilot
+  "github/copilot.vim",
 
   -- Auto Bracket and Quote Pairing
   {
