@@ -62,6 +62,9 @@ vim.lsp.config("lua_ls", {
 
 -- Support for ruby_lsp
 vim.lsp.config("ruby_lsp", {
+  filetypes = { "ruby", "eruby", "Gemfile" },
+  { cmd = { vim.fn.expand("~/.local/share/mise/shims/ruby-lsp") } },
+  root_markers = { "Gemfile", ".git" },
   capabilities = lsp_defaults.capabilities,
   init_options = {
     addonSettings = {
@@ -72,6 +75,15 @@ vim.lsp.config("ruby_lsp", {
   }
 })
 
+vim.lsp.config("rubocop", {
+  filetypes = { "ruby", "eruby", "Gemfile" },
+  cmd = { "bundle", "exec", "rubocop", "--lsp" },
+  root_markers = { "Gemfile", ".git" },
+  capabilities = lsp_defaults.capabilities,
+})
+
+
 -- Enable ruby_lsp. This will show a warning if the server is not installed for
 -- the specific ruby version used in the project.
 vim.lsp.enable("ruby_lsp")
+vim.lsp.enable("rubocop")
