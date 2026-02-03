@@ -5,6 +5,24 @@ vim.cmd("vnoremap K \\<noop>")
 vim.cmd("nnoremap <c-w>o \\<noop>")
 vim.cmd("vnoremap <c-w>o \\<noop>")
 
+-- Tmux Navigator (use same keys across tmux and nvim)
+vim.g.tmux_navigator_no_mappings = 1
+local function tmux_nav(mode, lhs, cmd)
+	vim.keymap.set(mode, lhs, cmd, { silent = true, noremap = true })
+end
+
+tmux_nav("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
+tmux_nav("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
+tmux_nav("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
+tmux_nav("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
+tmux_nav("n", "<C-\\>", "<cmd>TmuxNavigatePrevious<cr>")
+
+tmux_nav("t", "<C-h>", "<C-\\><C-n><cmd>TmuxNavigateLeft<cr>")
+tmux_nav("t", "<C-j>", "<C-\\><C-n><cmd>TmuxNavigateDown<cr>")
+tmux_nav("t", "<C-k>", "<C-\\><C-n><cmd>TmuxNavigateUp<cr>")
+tmux_nav("t", "<C-l>", "<C-\\><C-n><cmd>TmuxNavigateRight<cr>")
+tmux_nav("t", "<C-\\>", "<C-\\><C-n><cmd>TmuxNavigatePrevious<cr>")
+
 -- Telescope
 Mapper.map(
 	"n",
