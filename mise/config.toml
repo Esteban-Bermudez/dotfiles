@@ -19,6 +19,10 @@ ruby = "latest"
 tmux = "latest"
 zig = "latest"
 zoxide = "latest"
+jq = "latest"
+codex = "latest"
+heroku = "latest"
+opencode = "latest"
 
 
 [settings]
