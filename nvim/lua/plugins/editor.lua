@@ -48,7 +48,7 @@ return {
       -- Leader-based keymaps.
       vim.keymap.set({ "n", "x" }, "<leader>a", function() require("opencode").ask("@this: ", { submit = true }) end,
         { desc = "Ask opencode…" })
-      vim.keymap.set({ "n", "x" }, "<leader>oo", function() require("opencode").select() end,
+      vim.keymap.set({ "n", "x" }, "<leader>o", function() require("opencode").select() end,
         { desc = "Execute opencode action…" })
       vim.keymap.set({ "n", "t" }, "<leader>c", function() require("opencode").toggle() end,
         { desc = "Toggle opencode chat" })
