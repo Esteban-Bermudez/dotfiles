@@ -60,9 +60,9 @@ dot() {
 
 ff() {
   if command -v bat &> /dev/null; then
-    fzf-tmux -p -w 90% -h 90% --preview 'bat --style=numbers --color=always {}'
+    fzf --tmux center,90%,90% --preview 'bat --style=numbers --color=always {}'
   else
-    fzf-tmux -p -w 90% -h 90% --preview 'cat {}'
+    fzf --tmux center,90%,90% --preview 'cat {}'
   fi
 }
 
