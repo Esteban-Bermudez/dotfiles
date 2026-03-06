@@ -22,6 +22,8 @@ local function diff_source()
   end
 end
 
+local treesitter_languages = { 'go', 'ruby', 'lua', 'tsx', 'typescript', 'javascript', 'jsx', 'json' }
+
 return {
   -- Hex Colours
   {
@@ -36,7 +38,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
     build = ":TSUpdate", -- Automatically update parsers on plugin build
-    cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
     opts = {
       highlight = {
         enable = true,
@@ -46,6 +47,12 @@ return {
       folds = { enable = true },
     },
     config = function()
+      require 'nvim-treesitter'.install(treesitter_languages)
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = treesitter_languages,
+        callback = function() vim.treesitter.start() end,
+      })
+
       vim.treesitter.language.register("markdown", "mdx")
     end,
   },
