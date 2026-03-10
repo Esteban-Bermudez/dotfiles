@@ -40,7 +40,7 @@ alias d="docker"
 alias n="nvim"
 alias c="clear"
 alias lg="lazygit"
-alias oc="opencode"
+alias oc="opencode --port"
 
 cat() {
   if command -v bat &> /dev/null; then
