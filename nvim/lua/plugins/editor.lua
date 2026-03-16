@@ -58,10 +58,15 @@ return {
       vim.keymap.set("n", "<leader>ol", function() return require("opencode").operator("@this ") .. "_" end,
         { desc = "Add line to opencode", expr = true })
 
-      vim.keymap.set("n", "<leader>ou", function() require("opencode").command("session.half.page.up") end,
-        { desc = "Scroll opencode up" })
-      vim.keymap.set("n", "<leader>od", function() require("opencode").command("session.half.page.down") end,
-        { desc = "Scroll opencode down" })
+      require("lualine").setup({
+        tabline = {
+          lualine_z = {
+            {
+              require("opencode").statusline,
+            },
+          }
+        }
+      })
     end,
   }
 }
