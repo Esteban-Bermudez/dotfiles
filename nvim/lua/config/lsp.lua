@@ -63,7 +63,7 @@ vim.lsp.config("lua_ls", {
 -- Support for ruby_lsp
 vim.lsp.config("ruby_lsp", {
   filetypes = { "ruby", "eruby", "Gemfile" },
-  { cmd = { vim.fn.expand("~/.local/share/mise/shims/ruby-lsp") } },
+  { cmd = { vim.fn.expand("~/.local/share/mise"), "x", "--", "ruby-lsp" } },
   root_markers = { "Gemfile", ".git" },
   capabilities = lsp_defaults.capabilities,
   init_options = {
@@ -77,7 +77,8 @@ vim.lsp.config("ruby_lsp", {
 
 vim.lsp.config("rubocop", {
   filetypes = { "ruby", "eruby", "Gemfile" },
-  cmd = { "bundle", "exec", "rubocop", "--lsp" },
+  -- { cmd = { vim.fn.expand("~/.local/share/mise"), "x", "--", "rubocop" } },
+  { cmd = { "bundle", "exec", "rubocop", "--lsp" } },
   root_markers = { "Gemfile", ".git" },
   capabilities = lsp_defaults.capabilities,
 })
