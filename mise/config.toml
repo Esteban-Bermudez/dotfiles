@@ -23,7 +23,7 @@ jq = "latest"
 codex = "latest"
 heroku = "latest"
 opencode = "latest"
-
+tree-sitter = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "ruby"]
