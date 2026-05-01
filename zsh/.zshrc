@@ -58,6 +58,8 @@ dot() {
     fi
 }
 
+source <(fzf --zsh)
+
 ff() {
   if command -v bat &> /dev/null; then
     fzf --tmux center,90%,90% --preview 'bat --style=numbers --color=always {}'
