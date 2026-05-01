@@ -21,7 +21,7 @@
 [rebase]
 	autosquash = true
 [user]
-	email = esteban@bermudezaguirre.com
+	email = esteban.bermudez@paved.com
 	name = Esteban-Bermudez
 [core]
 	excludesfile = ~/.config/git/ignore
