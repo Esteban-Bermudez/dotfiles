@@ -1,8 +1,7 @@
 [alias]
   co = checkout
   brunt = "!f() { git checkout $(git branch --sort=-committerdate | fzf -q "${@:-''}"); }; f"
-  form = !git fetch origin main:main && git rebase -i main
-  ford = !git fetch origin develop:develop && git rebase -i develop
+  form = !git fetch origin main:main && git rebase -i main || git fetch origin master:master && git rebase -i master
   forb = "!f() { git fetch origin $1:$1 && git rebase -i $1; }; f"
   lease = !git push --force-with-lease
   append = !git commit --amend --no-edit
