@@ -109,34 +109,9 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # Prompt
 
-function prompt_ruby_version {
-  if [ -f .ruby-version ]; then
-    RUBY_PROMPT=" %F{red} $(cat .ruby-version)%f"
-  else 
-    RUBY_PROMPT=""
-  fi
-}
-
-function prompt_node_version {
-  if [ -f .node-version ]; then
-    NODE_PROMPT=" %F{green}󰎙 $(cat .node-version)%f"
-  elif [ -f .nvmrc ]; then
-    NODE_PROMPT=" %F{green}󰎙 $(cat .nvmrc)%f"
-  else
-    NODE_PROMPT=""
-  fi
-}
-
-function prompt_python_version_venv {
-  if [ $VIRTUAL_ENV ]; then
-    VENV_PROMPT=" %F{blue} $(python3 --version | sed 's/[Python ]*//g') (${VIRTUAL_ENV##*/})%f"
-  else
-    VENV_PROMPT=""
-  fi
-}
+source "$XDG_CONFIG_HOME/zsh/prompt_versions.zsh"
 
 function update_prompt {
-  VERSION_PROMPT="$RUBY_PROMPT$NODE_PROMPT$VENV_PROMPT"
   NEWLINE=$'\n'
   PROMPT="%F{cyan}%2~%f %F{yellow}${vcs_info_msg_0_}%f${VERSION_PROMPT}${NEWLINE}${ARROW} "
 }
@@ -150,9 +125,7 @@ zstyle ':vcs_info:*' stagedstr "%F{green}+%f"
 zstyle ':vcs_info:*' unstagedstr "%F{red}-%f"
 precmd() { vcs_info }
 precmd_functions+=( precmd_vcs_info)
-precmd_functions+=( prompt_ruby_version)
-precmd_functions+=( prompt_node_version)
-precmd_functions+=( prompt_python_version_venv)
+precmd_functions+=( prompt_versions)
 precmd_functions+=( update_prompt)
 
 function zle-line-init zle-keymap-select {
