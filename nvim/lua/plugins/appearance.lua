@@ -22,7 +22,21 @@ local function diff_source()
   end
 end
 
-local treesitter_languages = { 'go', 'ruby', 'lua', 'tsx', 'typescript', 'javascript', 'jsx', 'json' }
+local treesitter_languages = {
+  'go',
+  'ruby',
+  'lua',
+  'tsx',
+  'typescript',
+  'javascript',
+  'jsx',
+  'json',
+  'html',
+  'css',
+  'scss',
+  'markdown',
+  'mdx'
+}
 
 return {
   -- Hex Colours
