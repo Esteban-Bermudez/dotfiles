@@ -1,0 +1,20 @@
+{
+  "lastChangelogVersion": "0.80.6",
+  "theme": "light/dark",
+  "defaultProvider": "opencode",
+  "defaultModel": "deepseek-v4-flash-free",
+  "defaultThinkingLevel": "high",
+  "packages": [
+    "npm:@gotgenes/pi-anthropic-auth",
+    "npm:pi-web-access",
+    "npm:pi-mcp-adapter",
+    "npm:@devkade/pi-plan"
+  ],
+  "images": {
+    "blockImages": false
+  },
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "httpIdleTimeoutMs": 60000
+}

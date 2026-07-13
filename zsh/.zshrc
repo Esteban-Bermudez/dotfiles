@@ -4,6 +4,13 @@ export VISUAL=nvim
 
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# Pi
+export PI_CODING_AGENT_DIR="$XDG_CONFIG_HOME/pi/agent"
+export PI_CODING_AGENT_SESSION_DIR="$XDG_DATA_HOME/pi/sessions"
 
 # Mise
 eval "$($HOME/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
