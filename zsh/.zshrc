@@ -82,7 +82,13 @@ alias leetcode="nvim leetcode.nvim"
 alias rscope="rg -g 'spec/**/*_spec.rb' --files | ff | xargs -o bundle exec rspec"
 
 
-alias sourceall="source ~/.config/zsh/.zshrc && tmux source ~/.config/tmux/tmux.conf"
+unalias sourceall 2>/dev/null || true
+sourceall() {
+    source ~/.config/zsh/.zshrc
+    # Existing tmux servers keep the environment from when they started.
+    tmux set-environment -g PATH "$PATH"
+    tmux source-file ~/.config/tmux/tmux.conf
+}
 
 alias ..='cd ..'
 alias ...='cd ../..'
