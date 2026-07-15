@@ -1,14 +1,13 @@
 {
-  "lastChangelogVersion": "0.80.6",
+  "lastChangelogVersion": "0.80.7",
   "theme": "light/dark",
-  "defaultProvider": "opencode",
-  "defaultModel": "deepseek-v4-flash-free",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-sonnet-5",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:@gotgenes/pi-anthropic-auth",
     "npm:pi-web-access",
-    "npm:pi-mcp-adapter",
-    "npm:@devkade/pi-plan"
+    "npm:pi-mcp-adapter"
   ],
   "images": {
     "blockImages": false
@@ -16,5 +15,20 @@
   "terminal": {
     "showTerminalProgress": true
   },
-  "httpIdleTimeoutMs": 60000
+  "httpIdleTimeoutMs": 60000,
+  "warnings": {
+    "anthropicExtraUsage": false
+  },
+  "enabledModels": [
+    "anthropic/claude-fable-5",
+    "anthropic/claude-sonnet-5",
+    "anthropic/claude-opus-4-8",
+    "openai-codex/gpt-5.6-terra",
+    "opencode/deepseek-v4-flash-free",
+    "anthropic/claude-haiku-4-5",
+    "openai-codex/gpt-5.5",
+    "openai-codex/gpt-5.6-luna",
+    "openai-codex/gpt-5.6-sol"
+  ],
+  "shellCommandPrefix": "shopt -s expand_aliases\neval \"$(grep '^alias ' ~/.config/zsh/.zshrc)\""
 }
