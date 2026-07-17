@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.80.7",
+  "lastChangelogVersion": "0.80.10",
   "theme": "light/dark",
   "defaultProvider": "anthropic",
   "defaultModel": "claude-sonnet-5",
@@ -7,7 +7,9 @@
   "packages": [
     "npm:@gotgenes/pi-anthropic-auth",
     "npm:pi-web-access",
-    "npm:pi-mcp-adapter"
+    "npm:pi-mcp-adapter",
+    "npm:@fgladisch/pi-welcome-message",
+    "npm:@tmustier/pi-usage-extension"
   ],
   "images": {
     "blockImages": false
