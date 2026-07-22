@@ -23,6 +23,9 @@ heroku = "latest"
 opencode = "latest"
 tree-sitter = "latest"
 act = "latest"
+stripe = "latest"
+vercel = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "ruby"]
