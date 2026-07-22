@@ -27,45 +27,13 @@ return {
     },
   },
 
-  -- Opencode
+  -- Pi
   {
-    "NickvanDyke/opencode.nvim",
-    dependencies = {
-      -- Recommended for `ask()` and `select()`.
-      -- Required for `snacks` provider.
-      ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
-      { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
-    },
+    "carderne/pi-nvim",
     config = function()
-      ---@type opencode.Opts
-      vim.g.opencode_opts = {
-        -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition" on the type or field.
-      }
-
-      -- Required for `opts.events.reload`.
-      vim.o.autoread = true
-
-      -- Leader-based keymaps.
-      vim.keymap.set({ "n", "x" }, "<leader>a", function() require("opencode").ask("@this: ", { submit = true }) end,
-        { desc = "Ask opencode…" })
-      vim.keymap.set({ "n", "x" }, "<leader>o", function() require("opencode").select() end,
-        { desc = "Execute opencode action…" })
-      vim.keymap.set({ "n", "t" }, "<leader>c", function() require("opencode").toggle() end,
-        { desc = "Toggle opencode chat" })
-
-      vim.keymap.set({ "n", "x" }, "<leader>or", function() return require("opencode").operator("@this ") end,
-        { desc = "Add range to opencode", expr = true })
-      vim.keymap.set("n", "<leader>ol", function() return require("opencode").operator("@this ") .. "_" end,
-        { desc = "Add line to opencode", expr = true })
-
-      require("lualine").setup({
-        tabline = {
-          lualine_z = {
-            {
-              require("opencode").statusline,
-            },
-          }
-        }
+      require("pi-nvim").setup({
+        socket_path = nil, -- auto-discover
+        set_default_keymaps = true,
       })
     end,
   }
