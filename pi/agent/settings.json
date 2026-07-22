@@ -9,7 +9,10 @@
     "npm:pi-web-access",
     "npm:pi-mcp-adapter",
     "npm:@fgladisch/pi-welcome-message",
-    "npm:@tmustier/pi-usage-extension"
+    "npm:@tmustier/pi-usage-extension",
+    "npm:@tifan/pi-rename",
+    "npm:@senad-d/micme",
+    "npm:pi-nvim"
   ],
   "images": {
     "blockImages": false
@@ -32,5 +35,6 @@
     "openai-codex/gpt-5.6-luna",
     "openai-codex/gpt-5.6-sol"
   ],
-  "shellCommandPrefix": "shopt -s expand_aliases\neval \"$(grep '^alias ' ~/.config/zsh/.zshrc)\""
+  "shellCommandPrefix": "shopt -s expand_aliases\neval \"$(grep '^alias ' ~/.config/zsh/.zshrc)\"",
+  "hideThinkingBlock": true
 }
