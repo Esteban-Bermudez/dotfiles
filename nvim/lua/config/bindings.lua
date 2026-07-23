@@ -212,3 +212,9 @@ Mapper.map("n", "<leader>lr", "<cmd>Leet run<cr>", {
 	silent = true,
 	noremap = true,
 }, "LeetCode Run", "leet_run", "Run code against test cases")
+
+-- Delete active buffer and close its window pane completely
+Mapper.map("n", "<leader>d", "<cmd>bd<cr>", {
+	silent = true,
+	noremap = true,
+}, "Buffer", "delete", "Delete buffer and close split pane")
