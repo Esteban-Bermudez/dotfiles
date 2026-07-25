@@ -35,7 +35,7 @@ export default function (pi: ExtensionAPI) {
           const modelName = ctx.model?.name
           const thinking = pi.getThinkingLevel()
 
-          const planModeStatus = footerData.getExtensionStatuses().get("plan-mode")
+          const modeStatus = footerData.getExtensionStatuses().get("modes")
 
           const leftParts = [cwd]
           if (branch) leftParts.push(branch)
@@ -43,7 +43,7 @@ export default function (pi: ExtensionAPI) {
           if (modelName) leftParts.push(modelName)
           leftParts.push(thinking)
           const leftRest = theme.fg("dim", leftParts.join(" · "))
-          const left = planModeStatus ? `${planModeStatus} ${leftRest}` : leftRest
+          const left = modeStatus ? `${modeStatus} ${leftRest}` : leftRest
 
           const sessionName = ctx.sessionManager.getSessionName()
           const usage = ctx.getContextUsage()
