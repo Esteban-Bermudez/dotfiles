@@ -1,8 +1,8 @@
 {
-  "lastChangelogVersion": "0.80.10",
+  "lastChangelogVersion": "0.82.1",
   "theme": "light/dark",
   "defaultProvider": "anthropic",
-  "defaultModel": "claude-sonnet-5",
+  "defaultModel": "claude-opus-5",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:@gotgenes/pi-anthropic-auth",
@@ -27,7 +27,7 @@
   "enabledModels": [
     "anthropic/claude-fable-5",
     "anthropic/claude-sonnet-5",
-    "anthropic/claude-opus-4-8",
+    "anthropic/claude-opus-5",
     "openai-codex/gpt-5.6-terra",
     "opencode/deepseek-v4-flash-free",
     "anthropic/claude-haiku-4-5",
