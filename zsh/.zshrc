@@ -43,11 +43,13 @@ alias gc="git commit"
 
 alias bx="bundle exec"
 
-alias d="docker"
 alias n="nvim"
 alias c="clear"
 alias lg="lazygit"
 alias oc="opencode --port"
+
+alias j="jotix"
+alias sgp="spotgo player"
 
 cat() {
   if command -v bat &> /dev/null; then
@@ -95,7 +97,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 tsesh() {
-    session=$(tmux ls | fzf | cut -d: -f1)
+    session=$(tmux ls | fzf --tmux | cut -d: -f1)
     if [[ -z "$TMUX" ]]; then
         if [ -n "$session" ]; then
             tmux attach-session -t "$session"
