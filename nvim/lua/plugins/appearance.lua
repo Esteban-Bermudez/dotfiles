@@ -26,16 +26,18 @@ local treesitter_languages = {
   'go',
   'ruby',
   'lua',
+  'zig',
+  'c',
   'tsx',
   'typescript',
   'javascript',
+  'tsx',
   'jsx',
   'json',
   'html',
   'css',
   'scss',
   'markdown',
-  'mdx'
 }
 
 return {
@@ -61,13 +63,20 @@ return {
       folds = { enable = true },
     },
     config = function()
+      vim.treesitter.language.register("markdown", { "mdx" })
+      vim.treesitter.language.register("tsx", { "typescriptreact" })
+
       require 'nvim-treesitter'.install(treesitter_languages)
+
+      -- Append to list typescriptreact and mdx to the list of filetypes that
+      -- will trigger treesitter highlighting
+      treesitter_languages[#treesitter_languages + 1] = "typescriptreact"
+      treesitter_languages[#treesitter_languages + 1] = "mdx"
+
       vim.api.nvim_create_autocmd('FileType', {
         pattern = treesitter_languages,
         callback = function() vim.treesitter.start() end,
       })
-
-      vim.treesitter.language.register("markdown", "mdx")
     end,
   },
 
