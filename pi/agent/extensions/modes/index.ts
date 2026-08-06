@@ -218,21 +218,37 @@ export default function modesExtension(pi: ExtensionAPI): void {
 		}
 	});
 
-	// ── Filter stale mode context when not active ──
+	// ── Filter stale mode context (keep the current mode's own markers) ──
 
 	pi.on("context", async (event) => {
 		if (isPlan()) return;
+
+		// Only strip markers for modes that are NOT active. Without this, the
+		// freshly injected [PAIR MODE ACTIVE] message would be filtered out
+		// before it ever reaches the model and pair mode would never apply.
+		const staleCustom = new Set<string>();
+		const staleNeedles: string[] = [];
+		if (mode === "none") {
+			staleCustom.add("plan-mode-context");
+			staleCustom.add("plan-execution-context");
+			staleCustom.add("pair-mode-context");
+			staleNeedles.push("[PLAN MODE ACTIVE]", "[EXECUTING PLAN", "[PAIR MODE ACTIVE]");
+		} else if (mode === "pair") {
+			staleCustom.add("plan-mode-context");
+			staleCustom.add("plan-execution-context");
+			staleNeedles.push("[PLAN MODE ACTIVE]", "[EXECUTING PLAN");
+		}
+
 		return {
 			messages: event.messages.filter((m) => {
 				const msg = m as AgentMessage & { customType?: string };
-				if (msg.customType && ["plan-mode-context", "plan-execution-context", "pair-mode-context"].includes(msg.customType)) return false;
+				if (msg.customType && staleCustom.has(msg.customType)) return false;
 				if (msg.role !== "user") return true;
 				const content = msg.content;
-				const needles = ["[PLAN MODE ACTIVE]", "[EXECUTING PLAN", "[PAIR MODE ACTIVE]"];
-				if (typeof content === "string") return !needles.some((n) => content.includes(n));
+				if (typeof content === "string") return !staleNeedles.some((n) => content.includes(n));
 				if (Array.isArray(content)) {
 					return !content.some(
-						(c) => c.type === "text" && (c as TextContent).text && needles.some((n) => (c as TextContent).text!.includes(n)),
+						(c) => c.type === "text" && (c as TextContent).text && staleNeedles.some((n) => (c as TextContent).text!.includes(n)),
 					);
 				}
 				return true;
@@ -291,15 +307,20 @@ Do NOT attempt to make changes — just describe what you would do.`,
 				message: {
 					customType: "pair-mode-context",
 					content: `[PAIR MODE ACTIVE]
-You are in pair programming mode.
+You are in pair programming mode. The user drives; you advise. You never write code for them.
 
-Rules:
+Hard rules:
+- NEVER use the edit or write tools, for any reason. No exceptions, no "just one line".
+- Code snippets ARE allowed when used as illustrative examples for learning (e.g. showing example code that the user then implements themselves in their own way). Do not hand over full implementations of the user's own tasks. NEVER output runnable commands.
+- Do not run commands that modify files (no formatters, no file writes, no migrations).
+- Read-only exploration is fine: reading files, searching, running builds/tests to check the user's code.
 - Guide the user step by step. Point to specific files and line numbers.
-- Explain what needs to change and why. Describe the approach.
-- Do NOT output code blocks or code snippets.
-- Do NOT use edit/write tools unless the user explicitly asks you to.
+- Explain what needs to change and why. Describe the approach in plain language.
 - Ask questions to engage the user and let them drive.
-- The user writes the code — you advise and review.
+- End every reply with a question that moves the work forward.
+
+If you catch yourself about to write or edit code, stop and describe instead.
+The user writes the code — you advise and review.
 
 Your job is to be a thoughtful senior developer looking over their shoulder.`,
 					display: false,
