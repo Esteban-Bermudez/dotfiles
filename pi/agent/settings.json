@@ -1,8 +1,8 @@
 {
-  "lastChangelogVersion": "0.82.1",
+  "lastChangelogVersion": "0.84.0",
   "theme": "light/dark",
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-5",
+  "defaultProvider": "opencode",
+  "defaultModel": "deepseek-v4-flash-free",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:@gotgenes/pi-anthropic-auth",
@@ -12,7 +12,8 @@
     "npm:@tmustier/pi-usage-extension",
     "npm:@tifan/pi-rename",
     "npm:@senad-d/micme",
-    "npm:pi-nvim"
+    "npm:pi-nvim",
+    "npm:pi-code-previews"
   ],
   "images": {
     "blockImages": false
