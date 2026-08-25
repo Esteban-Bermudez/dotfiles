@@ -1,8 +1,8 @@
 {
-  "lastChangelogVersion": "0.84.0",
+  "lastChangelogVersion": "0.84.3",
   "theme": "light/dark",
-  "defaultProvider": "opencode",
-  "defaultModel": "deepseek-v4-flash-free",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.6-luna",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:@gotgenes/pi-anthropic-auth",
@@ -13,7 +13,9 @@
     "npm:@tifan/pi-rename",
     "npm:@senad-d/micme",
     "npm:pi-nvim",
-    "npm:pi-code-previews"
+    "npm:pi-code-previews",
+    "npm:@latentminds/pi-quotas",
+    "git:github.com/LoneExile/pi-output-styles"
   ],
   "images": {
     "blockImages": false
@@ -37,5 +39,9 @@
     "openai-codex/gpt-5.6-sol"
   ],
   "shellCommandPrefix": "shopt -s expand_aliases\neval \"$(grep '^alias ' ~/.config/zsh/.zshrc)\"",
-  "hideThinkingBlock": true
+  "hideThinkingBlock": true,
+  "markdown": {
+    "mermaid": "streaming"
+  },
+  "tuiMode": "regular"
 }

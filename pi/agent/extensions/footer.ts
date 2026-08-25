@@ -35,7 +35,11 @@ export default function (pi: ExtensionAPI) {
           const modelName = ctx.model?.name
           const thinking = pi.getThinkingLevel()
 
-          const modeStatus = footerData.getExtensionStatuses().get("modes")
+          const statuses = footerData.getExtensionStatuses()
+          const modeStatus = statuses.get("modes")
+          const styleStatus = statuses.get("pi-output-styles")
+          const styleName = styleStatus?.replace(/^style:\s*/, "")
+          const styleIndicator = styleName ? `\x1b[35m${styleName}\x1b[39m` : undefined
 
           const leftParts = [cwd]
           if (branch) leftParts.push(branch)
@@ -43,18 +47,20 @@ export default function (pi: ExtensionAPI) {
           if (modelName) leftParts.push(modelName)
           leftParts.push(thinking)
           const leftRest = theme.fg("dim", leftParts.join(" · "))
-          const left = modeStatus ? `${modeStatus} ${leftRest}` : leftRest
+          const indicators = [modeStatus].filter(Boolean).join(" ")
+          const left = indicators ? `${indicators} ${leftRest}` : leftRest
 
           const sessionName = ctx.sessionManager.getSessionName()
           const usage = ctx.getContextUsage()
           const rightParts: string[] = []
-          if (sessionName) rightParts.push(sessionName)
+          if (sessionName) rightParts.push(theme.fg("muted", sessionName))
+          if (styleIndicator) rightParts.push(styleIndicator)
           if (usage && usage.percent !== null && usage.tokens !== null) {
             rightParts.push(
-              `${usage.percent.toFixed(1)}%/${formatTokens(usage.contextWindow)}`,
+              theme.fg("muted", `${usage.percent.toFixed(1)}%/${formatTokens(usage.contextWindow)}`),
             )
           }
-          const right = theme.fg("dim", rightParts.join(" · "))
+          const right = rightParts.join(theme.fg("muted", " · "))
 
           const gap = Math.max(1, width - visibleWidth(left) - visibleWidth(right))
           return [truncateToWidth(left + " ".repeat(gap) + right, width)]

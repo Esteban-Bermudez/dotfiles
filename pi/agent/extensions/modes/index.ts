@@ -24,6 +24,12 @@ const MODE_LABEL: Record<Mode, string> = {
 
 const MODE_ORDER: Mode[] = ["none", "plan", "pair"];
 
+const MODE_COLOR = {
+	none: "muted",
+	plan: "warning",
+	pair: "accent",
+} as const satisfies Record<Mode, string>;
+
 interface ModesState {
 	mode: Mode;
 	planTodos: TodoItem[];
@@ -70,7 +76,7 @@ export default function modesExtension(pi: ExtensionAPI): void {
 			const done = planTodos.filter((t) => t.completed).length;
 			ctx.ui.setStatus("modes", ctx.ui.theme.fg("accent", `📋 ${done}/${planTodos.length}`));
 		} else if (mode !== "none") {
-			ctx.ui.setStatus("modes", ctx.ui.theme.fg(mode === "plan" ? "warning" : "accent", fmtMode(mode)));
+			ctx.ui.setStatus("modes", ctx.ui.theme.fg(MODE_COLOR[mode], fmtMode(mode)));
 		} else {
 			ctx.ui.setStatus("modes", undefined);
 		}
@@ -437,7 +443,8 @@ Your job is to be a thoughtful senior developer looking over their shoulder.`,
 		if (stateEntry?.data) {
 			// Flags take precedence
 			if (!pi.getFlag("plan") && !pi.getFlag("pair")) {
-				mode = stateEntry.data.mode ?? "none";
+				const restoredMode = stateEntry.data.mode;
+				mode = restoredMode === "plan" || restoredMode === "pair" ? restoredMode : "none";
 			}
 			planTodos = stateEntry.data.planTodos ?? [];
 			planExecuting = stateEntry.data.planExecuting ?? false;
