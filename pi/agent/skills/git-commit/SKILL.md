@@ -22,8 +22,23 @@ Hard rules for this team:
 - **No conventional / semantic prefixes.** No `feat:`, `fix:`, `chore:`, etc.
 - **No ticket prefix on the subject.** Don't write `PVD-1234: ...`. The ticket
   belongs in the PR title/body, not the commit subject.
-- Subject says what changes; body explains why it's needed and what problem it
-  solves.
+
+## Keep the body short
+
+Default to no body. Add one only if it earns its place:
+
+- **The one-sentence test.** Before adding a body, try writing one sentence
+  that isn't the subject restated in longer words. If you can't, skip the
+  body.
+- **Don't restate what the diff already proves.** If a file isn't in the
+  diff, don't write a sentence confirming it's unaffected. That belongs in
+  the PR description, for a reviewer, not in `git log` forever.
+- **Don't narrate your own commit sequence.** "This supersedes the last
+  commit" or "stops mattering once X lands" describes the order you worked
+  in, not the code. Leave it out.
+- **One paragraph, two to three sentences, by default.** Needing a second
+  paragraph is rare enough that it should make you stop and ask whether the
+  detail belongs in the PR body instead.
 
 Commit with a heredoc so the body wraps correctly:
 
