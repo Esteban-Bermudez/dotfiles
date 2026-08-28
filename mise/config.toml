@@ -25,7 +25,7 @@ tree-sitter = "latest"
 act = "latest"
 stripe = "latest"
 vercel = "latest"
-"npm:@earendil-works/pi-coding-agent" = "latest"
+"pi" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "ruby"]
