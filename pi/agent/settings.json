@@ -13,7 +13,6 @@
     "npm:@tifan/pi-rename",
     "npm:@senad-d/micme",
     "npm:pi-nvim",
-    "npm:pi-code-previews",
     "npm:@latentminds/pi-quotas",
     "git:github.com/LoneExile/pi-output-styles"
   ],
