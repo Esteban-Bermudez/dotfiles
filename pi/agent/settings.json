@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.3",
+  "lastChangelogVersion": "0.84.4",
   "theme": "light/dark",
   "defaultProvider": "opencode",
   "defaultModel": "muse-spark-1.2-contributor-free",
@@ -9,7 +9,6 @@
     "npm:pi-web-access",
     "npm:pi-mcp-adapter",
     "npm:@fgladisch/pi-welcome-message",
-    "npm:@tmustier/pi-usage-extension",
     "npm:@tifan/pi-rename",
     "npm:@senad-d/micme",
     "npm:pi-nvim",
