@@ -68,7 +68,7 @@ export default function modesExtension(pi: ExtensionAPI): void {
 	}
 
 	function isPlan(): boolean {
-		return mode === "plan" || planExecuting;
+		return mode === "plan";
 	}
 
 	function updateStatus(ctx: ExtensionContext): void {
@@ -403,18 +403,19 @@ Your job is to be a thoughtful senior developer looking over their shoulder.`,
 			const first = planTodos[0];
 			if (!first) return;
 
-			mode = "none"; // execution uses full tool access
-			planExecuting = true;
+			mode = "none";
+			planExecuting = false;
+			const remaining = planTodos.map((t) => `${t.step}. ${t.text}`).join("\n");
+			planTodos = [];
 			restoreNormalTools();
 			updateStatus(ctx);
 			persist();
 
-			const remaining = planTodos.map((t) => `${t.step}. ${t.text}`).join("\n");
 			pi.sendMessage(planMsg, { deliverAs: "followUp" });
 			pi.sendMessage(
 				{
 					customType: "plan-mode-execute",
-					content: `Execute the plan.\n\nRemaining steps:\n${remaining}\n\nStart with: ${first.text}\nAfter completing a step, include a [DONE:n] tag.`,
+					content: `Execute the plan.\n\nRemaining steps:\n${remaining}\n\nStart with: ${first.text}`,
 					display: true,
 				},
 				{ triggerTurn: true, deliverAs: "followUp" },
