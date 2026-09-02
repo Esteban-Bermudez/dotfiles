@@ -1,4 +1,5 @@
 [tools]
+aws = { version = "latest", symlink_bins = "true" }
 bat = "latest"
 bun = "latest"
 eza = "latest"
@@ -12,7 +13,7 @@ lazydocker = "latest"
 lazygit = "latest"
 neovim = "latest"
 node = "latest"
-python = "latest"
+python = "3.12"
 rg = "latest"
 ruby = "latest"
 tmux = "latest"
@@ -26,9 +27,39 @@ act = "latest"
 stripe = "latest"
 vercel = "latest"
 "pi" = "latest"
+ffmpeg = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "ruby"]
 
 [settings.ruby]
 compile = false
+
+[bootstrap.packages]
+"brew-cask:kitty" = "latest"
+"brew-cask:font-fira-mono-nerd-font" = "latest"
+"brew-cask:docker-desktop" = "latest"
+"brew-cask:scroll-reverser" = "latest"
+"brew-cask:karabiner-elements" = "latest"
+# "brew-cask:aerospace" not directly supported via mise API (nikitabobko/tap missing api/cask metadata)
+# handled via hook below
+
+[bootstrap.macos.dock]
+autohide = true
+tilesize = 49
+magnification = false
+orientation = "bottom"
+
+[bootstrap.macos.finder]
+show_pathbar = true
+
+[bootstrap.macos.defaults]
+"com.apple.finder" = { FXPreferredViewStyle = "Nlsv", AppleShowAllExtensions = true }
+"NSGlobalDomain" = { AppleShowAllExtensions = 1, AppleShowScrollBars = "Automatic", KeyRepeat = 2, InitialKeyRepeat = 25 }
+
+[bootstrap.hooks.post-packages]
+run = "if ! brew list --cask aerospace >/dev/null 2>&1; then brew install --cask nikitabobko/tap/aerospace; fi"
+
+[bootstrap.hooks.post-defaults]
+run = "killall Dock 2>/dev/null || true; killall Finder 2>/dev/null || true"
+
