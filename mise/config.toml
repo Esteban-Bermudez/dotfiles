@@ -38,6 +38,9 @@ compile = false
 [bootstrap.brew]
 adopt = true
 
+[dotfiles]
+"~/.zshenv/zdotdir" = { line = "ZDOTDIR=~/.config/zsh/" }
+
 [bootstrap.packages]
 "brew-cask:kitty" = "latest"
 "brew-cask:font-fira-mono-nerd-font" = "latest"
@@ -59,6 +62,8 @@ show_pathbar = true
 [bootstrap.macos.defaults]
 "com.apple.finder" = { FXPreferredViewStyle = "Nlsv", AppleShowAllExtensions = true }
 "NSGlobalDomain" = { AppleShowAllExtensions = 1, AppleShowScrollBars = "Automatic", KeyRepeat = 2, InitialKeyRepeat = 25 }
+
+
 
 [bootstrap.hooks.post-packages]
 run = "if ! brew list --cask aerospace >/dev/null 2>&1; then brew install --cask nikitabobko/tap/aerospace; fi"
