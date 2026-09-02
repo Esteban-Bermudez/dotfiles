@@ -26,7 +26,7 @@ tree-sitter = "latest"
 act = "latest"
 stripe = "latest"
 vercel = "latest"
-"pi" = "latest"
+pi = "latest"
 ffmpeg = "latest"
 
 [settings]
