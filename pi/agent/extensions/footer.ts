@@ -72,7 +72,33 @@ export default function (pi: ExtensionAPI) {
     setTimeout(() => currentTui?.requestRender(), 350)
   })
 
+  const SESSION_NAME_COLORS = [
+    "\x1b[91m",
+    "\x1b[92m",
+    "\x1b[93m",
+    "\x1b[94m",
+    "\x1b[95m",
+    "\x1b[96m",
+  ]
+
+  function pickSessionColor(exclude?: string): string {
+    const pool = exclude ? SESSION_NAME_COLORS.filter((c) => c !== exclude) : SESSION_NAME_COLORS
+    return pool[Math.floor(Math.random() * pool.length)]
+  }
+
+  let sessionColor = pickSessionColor()
+
+  pi.registerCommand("footer-color", {
+    description: "Re-roll the footer session-name color",
+    handler: async (_args, ctx) => {
+      sessionColor = pickSessionColor(sessionColor)
+      currentTui?.requestRender()
+      ctx.ui.notify("Footer session color re-rolled", "info")
+    },
+  })
+
   pi.on("session_start", async (_event, ctx) => {
+    sessionColor = pickSessionColor()
     ctx.ui.setFooter((tui, theme, footerData) => {
       currentTui = tui as unknown as { requestRender: () => void }
 
@@ -124,19 +150,26 @@ export default function (pi: ExtensionAPI) {
           const styleName = styleStatus?.replace(/^style:\s*/, "")
           const styleIndicator = styleName ? `\x1b[35m${styleName}\x1b[39m` : undefined
 
-          const leftParts = [cwd]
-          if (branch) leftParts.push(branch)
-          if (provider) leftParts.push(provider)
-          if (modelName) leftParts.push(modelName)
-          leftParts.push(thinking)
-          const leftRest = theme.fg("dim", leftParts.join(" · "))
-          const indicators = [modeStatus].filter(Boolean).join(" ")
-          const left = indicators ? `${indicators} ${leftRest}` : leftRest
-
           const sessionName = ctx.sessionManager.getSessionName()
+          const coloredName = sessionName ? `${sessionColor}\x1b[1m${sessionName}\x1b[22m\x1b[39m` : undefined
+
+          const leftRestParts: string[] = []
+          if (branch) leftRestParts.push(branch)
+          if (provider) leftRestParts.push(provider)
+          if (modelName) leftRestParts.push(modelName)
+          leftRestParts.push(thinking)
+          const leftRest = leftRestParts.length ? theme.fg("dim", leftRestParts.join(" · ")) : ""
+          const separator = theme.fg("dim", " · ")
+          const leftCore = coloredName
+            ? leftRest
+              ? `${coloredName}${separator}${leftRest}`
+              : coloredName
+            : leftRest
+          const indicators = [modeStatus].filter(Boolean).join(" ")
+          const left = indicators ? `${indicators} ${leftCore}` : leftCore
+
           const usage = ctx.getContextUsage()
-          const rightParts: string[] = []
-          if (sessionName) rightParts.push(theme.fg("muted", sessionName))
+          const rightParts: string[] = [theme.fg("dim", cwd)]
           if (styleIndicator) rightParts.push(styleIndicator)
           if (usage && usage.percent !== null && usage.tokens !== null) {
             rightParts.push(
