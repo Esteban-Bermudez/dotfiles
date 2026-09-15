@@ -77,6 +77,37 @@ ff() {
   fi
 }
 
+# fzf through my macos desktop apps like application viewer in mac by click one
+# it will open the app, and you can also see the app size and other info in the
+# preview window
+# macOS only: relies on /Applications, mdls, stat, and open -a
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  apps() {
+    local app preview
+    local -a dirs=(/Applications ~/Applications /System/Applications)
+
+    preview='
+      printf "\033[1;36m%s\033[0m\n\033[90m%s\033[0m\n\n" "$(basename {} .app)" {}
+      printf "\033[1m%-9s\033[0m %s\n" "Size:" "$(du -sh {} 2>/dev/null | cut -f1)"
+      printf "\033[1m%-9s\033[0m %s\n" "Modified:" "$(stat -f "%Sm" -t "%b %d, %Y %H:%M" {} 2>/dev/null)"
+      printf "\033[1m%-9s\033[0m %s\n" "Version:" "$(mdls -raw -name kMDItemVersion {} 2>/dev/null)"
+      printf "\033[1m%-9s\033[0m %s\n" "Bundle:" "$(mdls -raw -name kMDItemCFBundleIdentifier {} 2>/dev/null)"
+      printf "\033[1m%-9s\033[0m %s\n" "Kind:" "$(mdls -raw -name kMDItemKind {} 2>/dev/null)"
+    '
+
+    app=$(find "${dirs[@]}" -maxdepth 2 -name '*.app' ! -name '.*' 2>/dev/null | sort | fzf \
+      --tmux center,90%,80% \
+      --prompt='Apps> ' \
+      --delimiter / --with-nth=-1 \
+      --header='ENTER open | CTRL-O reveal in Finder' \
+      --preview="$preview" \
+      --preview-window='right,55%,border-left' \
+      --bind 'ctrl-o:execute(open -R {})')
+
+    [[ -n "$app" ]] && open -a "$app"
+  }
+fi
+
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden -g "!.git/"'
 # alias vimp="fzf-tmux -p -w 90% -h 80% --reverse --preview \"bat --color=always --line-range=:500 {}\" | xargs -o nvim"
 alias nff="ff | xargs -o nvim"
