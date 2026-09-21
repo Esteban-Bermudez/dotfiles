@@ -1,8 +1,8 @@
 {
-  "lastChangelogVersion": "0.85.1",
+  "lastChangelogVersion": "0.87.0",
   "theme": "light/dark",
-  "defaultProvider": "opencode",
-  "defaultModel": "muse-spark-1.3-contributor-free",
+  "defaultProvider": "antigravity",
+  "defaultModel": "gemini-3.8-flash",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:@gotgenes/pi-anthropic-auth",
@@ -14,7 +14,8 @@
     "npm:@latentminds/pi-quotas",
     "git:github.com/LoneExile/pi-output-styles",
     "npm:pi-memory",
-    "npm:pi-session-auto-rename"
+    "npm:pi-session-auto-rename",
+    "npm:@heyhuynhgiabuu/pi-oauth-antigravity"
   ],
   "images": {
     "blockImages": false
@@ -31,11 +32,11 @@
     "anthropic/claude-sonnet-5",
     "anthropic/claude-opus-5",
     "openai-codex/gpt-5.6-terra",
-    "opencode/muse-spark-1.3-contributor-free",
     "anthropic/claude-haiku-4-5",
     "openai-codex/gpt-5.5",
     "openai-codex/gpt-5.6-luna",
-    "openai-codex/gpt-5.6-sol"
+    "openai-codex/gpt-5.6-sol",
+    "antigravity/gemini-3.8-flash"
   ],
   "shellCommandPrefix": "shopt -s expand_aliases\neval \"$(grep '^alias ' ~/.config/zsh/.zshrc)\"",
   "hideThinkingBlock": true,
